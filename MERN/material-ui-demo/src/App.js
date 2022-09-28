@@ -1,7 +1,7 @@
 import './App.css';
 import Notes from './views/Notes';
 import Create from './views/Create';
-import { Route, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
