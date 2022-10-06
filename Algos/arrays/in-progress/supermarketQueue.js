@@ -22,28 +22,31 @@ P.S. The situation in this kata can be likened to the more-computer-science-rela
 // Not Done Yet
 
 function queueTime(customers, n) {
-    let totalTime = 0;
-    let most = 0;
-    let mostIdx = 0;
-    for (let i = 0; i < customers.length; i++){
-        if (n === 1){
-        totalTime += customers[i];
-        }
-        else if (customers[i] > most){
-            most = customers[i];
-            mostIdx = i;
-            continue;
-        }
-        if (customers[i] < most){
-            totalTime += customers[i];
-        }
-    }
-    if (n !== 1){
-        totalTime += most;
-    }
-    return totalTime;
+    // let totalTime = 0;
+    // let most = 0;
+    // let mostIdx = 0;
+    // for (let i = 0; i < customers.length; i++){
+    //     if (n === 1){
+    //     totalTime += customers[i];
+    //     }
+    //     else if (customers[i] > most){
+    //         most = customers[i];
+    //         mostIdx = i;
+    //         continue;
+    //     }
+    //     if (customers[i] < most){
+    //         totalTime += customers[i];
+    //     }
+    // }
+    // if (n !== 1){
+    //     totalTime += most;
+    // }
+    // return totalTime;
 }
 
 console.log(queueTime([5,3,4], 1));
+// should return 12 because when there is 1 till, the total is just the sum of the times
 console.log(queueTime([10,2,3,3], 2));
+// should return 10, because the second, third, & forth people in the queue finish before the first person has
 console.log(queueTime([2,3,10], 2));
+// should return 12
