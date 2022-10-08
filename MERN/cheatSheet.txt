@@ -1,0 +1,19 @@
+BACK-END
+*********
+npm init -y
+npm install express mongoose cors
+nodemon server.js
+
+(npm i bcrypt)
+(npm install socket.io)
+
+
+FRONT-END
+**********
+npx create-react-app client (or whatever the name of the project is)
+cd client (important to remember to go into that folder!)
+npm install axios react-router-dom
+npm start
+
+(npm install @material-ui/core --legacy-peer-deps)
+(npm install socket.io-client)

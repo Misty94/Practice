@@ -7,7 +7,12 @@
 
 const humanReadable = seconds => {
     let time = '';
-    
+    if (seconds.length === 1) return `00:00:0${seconds}`;
+    if (seconds.length === 2){
+        if (seconds[0] <= 5) return `00:00:${seconds[0]}${seconds[1]}`;
+    } else {
+        
+    }
 }
 
 

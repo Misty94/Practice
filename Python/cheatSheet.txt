@@ -1,0 +1,7 @@
+python -m pipenv install flask PyMySQL flask-bcrypt
+
+python -m pipenv shell
+
+python server.python
+
+For the DB updated-on note: NOW() ON UPDATE NOW()
