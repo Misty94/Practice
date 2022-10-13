@@ -14,31 +14,31 @@
             <h1>Registration</h1>
             <form action="/register/user" method="POST">
                 <label>First Name</label>
-                <input type="text" name="first_name">
+                <input type="text" name="first_name" class="mb-3">
                 {% for message in get_flashed_messages( category_filter = ["error_registration_first_name"] ) %}
                     <div class="text-danger d-block">{{message}}</div>
                 {% endfor %}
                 <br>
                 <label>Last Name</label>
-                <input type="text" name="last_name">
+                <input type="text" name="last_name" class="mb-3">
                 {% for message in get_flashed_messages( category_filter = ["error_registration_last_name"] ) %}
                     <div class="text-danger d-block">{{message}}</div>
                 {% endfor %}
                 <br>
                 <label>Email</label>
-                <input type="email" name="email">
+                <input type="email" name="email" class="mb-3">
                 {% for message in get_flashed_messages( category_filter = ["error_registration_email"] ) %}
                     <div class="text-danger d-block">{{message}}</div>
                 {% endfor %}
                 <br>
                 <label>Password</label>
-                <input type="password" name="password">
+                <input type="password" name="password" class="mb-3">
                 {% for message in get_flashed_messages( category_filter = ["error_registration_password"] ) %}
                     <div class="text-danger d-block">{{message}}</div>
                 {% endfor %}
                 <br>
                 <label>Confirm PW</label>
-                <input type="password" name="password_confirmation">
+                <input type="password" name="password_confirmation" class="mb-3">
                 {% for message in get_flashed_messages( category_filter = ["error_registration_password_confirmation"] ) %}
                     <div class="text-danger d-block">{{message}}</div>
                 {% endfor %}
@@ -50,13 +50,13 @@
             <h1>Login</h1>
             <form action="/login/user" method="POST">
                 <label>Email</label>
-                <input type="email" name="email">
+                <input type="email" name="email" class="mb-3">
                 {% for message in get_flashed_messages( category_filter = ["error_login_credentials"] ) %}
                     <div class="text-danger d-block">{{message}}</div>
                 {% endfor %}
                 <br>
                 <label>Password</label>
-                <input type="password" name="password">
+                <input type="password" name="password" class="mb-3">
                 {% for message in get_flashed_messages( category_filter = ["error_login_credentials"] ) %}
                     <div class="text-danger d-block">{{message}}</div>
                 {% endfor %}

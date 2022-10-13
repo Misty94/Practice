@@ -5,5 +5,11 @@
 }
 
 .reg, .log{
-    flex: 1
+    flex: 1;
+    background-color: darkslateblue;
+    border: 3px solid black;
 }
+
+/* .reg{
+    margin-right: 5px;
+} */
