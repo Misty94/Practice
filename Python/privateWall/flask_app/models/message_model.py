@@ -8,13 +8,14 @@ class Message:
         self.id = data['id']
         self.content = data['content']
         self.user_id = data['user_id']
+        self.friend_id = data['friend_id']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
 
     @classmethod
     def save(cls, data):
-        query = "INSERT INTO messages ( content, user_id ) "
-        query += "VALUES ( %(content)s, %(user_id)s );"
+        query = "INSERT INTO messages ( content, user_id, friend_id ) "
+        query += "VALUES ( %(content)s, %(user_id)s, %(friend_id)s );"
 
         return connectToMySQL( DATABASE ).query_db(query, data)
 
