@@ -6,8 +6,17 @@
 // Note: If the number is a multiple of both 3 and 5, only count it once.
 
 const solution = number => {
+    let sum = 0;
+    let num = number - 1;
     if (number < 0) return 0;
-    
+    // just see if the % 3 || % 5 === 0 then sum them all up
+    // BUT you need to loop through the numbers first to catch all the multiples
+    for (let i = num; i > 0; i--){
+        if (i % 3 === 0 || i % 5 === 0){
+            sum += i;
+        }
+    }
+    return sum;
 }
 
 console.log(solution(10));
