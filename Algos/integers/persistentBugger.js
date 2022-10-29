@@ -1,5 +1,6 @@
 // Input: a positve integer
 // Output: the param's multiplicative persistence (the number of times you must multiply the digits in the param until you reach a single digit)
+
 /*
 Examples: 
 39 --> 3 (because 3*9 = 27, 2*7 = 14, 1*4 = 4 and 4 has only one digit)
@@ -8,10 +9,21 @@ Examples:
  */
 
 const persistence = num => {
-    let product = 1;
+    let sNum = num.toString();
     let count = 0;
-    if (num.length === 1) return 0;
-    for (let i = 0; i < product.length; i++){
-        
+    let product = 1;
+    if (num < 10) return 0;
+    while (sNum.length > 1){
+        for (let i = 0; i < sNum.length; i++){
+            product *= sNum[i];
+        }
+        count++;
+        sNum = product.toString();
+        product = 1;
     }
+    return count;
 }
+
+console.log(persistence(39));
+console.log(persistence(999));
+console.log(persistence(4));
