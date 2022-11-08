@@ -26,6 +26,10 @@ class Message:
 
         return connectToMySQL( DATABASE ).query_db(query, data)
 
+    @classmethod
+    def get_my_messages(cls, data):
+        query = "SELECT users.first_name as user_id " # First try querie wording in MySQL!
+
     @staticmethod
     def validate_message(data):
         is_valid = True
