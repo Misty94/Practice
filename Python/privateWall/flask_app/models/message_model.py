@@ -28,7 +28,16 @@ class Message:
 
     @classmethod
     def get_my_messages(cls, data):
-        query = "SELECT users.first_name as user_id " # First try querie wording in MySQL!
+        query = "SELECT users.first_name AS user, users2.first_name AS friend, messages.* "
+        query += "FROM users LEFT JOIN messages ON users.id = messages.user_id "
+        query += "LEFT JOIN users AS users2 ON users2.id = messages.friend_id "
+        query += "WHERE users2.id = 1;" # %(friend_id)s ??? why is this not working
+
+        results = connectToMySQL( DATABASE ).query_db(query, data)
+        messages = []
+        for message in results:
+            messages.append(cls(message))
+        return messages
 
     @staticmethod
     def validate_message(data):

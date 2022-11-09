@@ -17,12 +17,16 @@
     <div class="d-flex p-3">
         <div class="l-col">
             <h5>Message(s) for You</h5>
-
+            {% for message in messages %}
+            <h3>{{message.friend}} said:</h3>
+            <p>{{message.content}}</p>
+            {% endfor %}
         </div>
         <div class="r-col">
             <h5>Send Messages</h5>
             <form action="/create/message" method="POST">
-                
+                <label></label>
+
             </form>
         </div>
     </div>
