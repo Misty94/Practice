@@ -16,18 +16,25 @@
     <hr>
     <div class="d-flex p-3">
         <div class="l-col">
-            <h5>Message(s) for You</h5>
+            <h5>{{message|length}} Message(s) for You</h5>
             {% for message in messages %}
-            <h3>{{message.friend}} said:</h3>
+            <h3>{{message.user}} said:</h3>
             <p>{{message.content}}</p>
             {% endfor %}
         </div>
         <div class="r-col">
             <h5>Send Messages</h5>
-            <form action="/create/message" method="POST">
-                <label></label>
-
-            </form>
+            {% for u in users %}
+                {% if u.id != session.user_id %}
+                    <form action="/create/message" method="POST">
+                        <input type="hidden" name="user_id" value={{session.user_id}}>
+                        <input type="hidden" name="friend_id" value={{u.id}}>
+                        <label>Message {{u.first_name}}:</label>
+                        <textarea name="content" cols="30" rows="3"></textarea>
+                        <input type="submit" value="Message" class="btn btn-success">
+                    </form>
+                {% endif %}
+            {% endfor %}
         </div>
     </div>
 </body>
