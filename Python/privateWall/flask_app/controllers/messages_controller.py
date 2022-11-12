@@ -27,7 +27,7 @@ def process_new_message():
 
     data = {
         "content": request.form['content'],
-        "user_id": session['user_id'],
+        "user_id": request.form['user_id'],
         "friend_id": request.form['friend_id']
     }
     message_model.Message.save(data)
