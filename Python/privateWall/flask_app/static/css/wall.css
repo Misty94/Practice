@@ -7,3 +7,8 @@
 .l-col, .r-col{
     flex: 1;
 }
+
+.r-col{
+    border-left: 1px solid gray;
+    padding-left: 50px;
+}
