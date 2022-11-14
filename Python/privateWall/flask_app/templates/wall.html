@@ -7,6 +7,7 @@
     <title>{{session['first_name']}}'s Messages</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/wall.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine|Inconsolata|PT+Serif|Zilla+Slab|Courgette">
 </head>
 <body>
     <div class="container mt-3">
@@ -18,9 +19,11 @@
     <div class="d-flex p-3">
         <div class="l-col">
             {% if messages|length > 1 %}
-                <h5>{{messages|length}} Messages for You</h5>
+                <h5 class="mb-3">{{messages|length}} Messages for You!</h5>
+            {% elif messages|length == 0 %}
+                <h5 class="mb-3">{{messages|length}} Messages for You!</h5>
             {% else %}
-                <h5>{{messages|length}} Message for You</h5>
+                <h5 class="mb-3">{{messages|length}} Message for You!</h5>
             {% endif %}
             {% for message in messages %}
             <div>
