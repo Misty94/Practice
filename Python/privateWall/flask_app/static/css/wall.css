@@ -2,7 +2,7 @@
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
-    font-family: 'Zilla Slab', serif;
+    font-family: 'Delius', serif;
 }
 
 .l-col, .r-col{
@@ -12,4 +12,8 @@
 .r-col{
     border-left: 1px solid gray;
     padding-left: 50px;
+}
+
+img{
+    height: 40px;
 }
