@@ -4,3 +4,18 @@
     box-sizing: border-box;
     font-family: 'Fredericka the Great', serif;
 }
+
+#ad{
+    /* background-image: url(https://media.istockphoto.com/id/892354186/photo/blackboard-or-chalkboard.jpg?b=1&s=170667a&w=0&k=20&c=XK0AVPivbftZ5QSv8zPXxPS68r6XhDOZurH-zTPEJ3Q=); */
+    /* background-image: url(https://i.pinimg.com/originals/9f/30/cd/9f30cda31be56c9a6631ce4e9726baa5.jpg); */
+    /* background-image: url(https://www.indivstock.com/static22/preview1/stock-photo-free-download-black-chalkboard-background-texture-260699.jpg); */
+    /* background-image: url(https://static6.depositphotos.com/1003644/565/i/450/depositphotos_5659853-stock-photo-green-chalkboard-with-eraser-marks.jpg); */
+    /* background-image: url(https://media.istockphoto.com/id/484715057/photo/blank-blackboard.jpg?s=612x612&w=0&k=20&c=33MGy01QPrTiE6LMF8Rb2NaSBzmpLPcUDyFKnWNIPOM=); */
+    /* background-image: url(https://www.creativefabrica.com/wp-content/uploads/2021/11/03/Empty-black-chalkboard-background-with-chalk-smudge-texture-Graphics-19605359-1-580x387.jpg); */
+}
+
+.forms{
+    display: none;
+    /* opacity: 0;
+    transform: translate(-50%, -50%); */
+}
