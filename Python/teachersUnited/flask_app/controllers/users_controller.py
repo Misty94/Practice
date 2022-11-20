@@ -32,3 +32,27 @@ def process_registration():
     session['user_id'] = user_id
 
     return redirect('/dashboard') # where to?
+
+
+@app.route('/login', methods=['POST'])
+def process_login():
+
+    current_user = User.get_one_by_email(request.form)
+    if current_user == False:
+        flash("Wrong email/password!", "error_login_credentials")
+        return redirect('/')
+    if current_user != False:
+        if not bcrypt.check_password_hash(current_user.password, request.form['password']):
+            flash("Wrong email/password!", "error_login_credentials")
+            return redirect('/')
+        else:
+            session['first_name'] = current_user.first_name
+            session['email'] = current_user.email
+            session['user_id'] = current_user.id
+            return redirect('/dashboard') # where to?
+
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect('/')

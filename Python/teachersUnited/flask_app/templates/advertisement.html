@@ -16,38 +16,64 @@
             <h2>Teachers United</h2>
             <button class="btn btn-primary" onclick="openLogin()">Login</button>
         </div>
-        <div>
-            <p>Join <strong>Teachers United</strong> where teachers from all over the world can connect with each other!</p>
+        <div class="text-center">
+            <h4>Join <strong>Teachers United</strong> where teachers from all over the world can connect with each other!</h4>
+            <p>Teachers United is a way for teachers all over the world to connect with each other, give or recieve advice, share stories, etc...</p>
         </div>
         <div id="regForm" class="forms">
             <form action="/register" method="POST">
                 <h2>Register Now</h2>
                 <label>First Name:</label>
                 <input type="text" name="first_name">
+                {% for message in get_flashed_messages( category_filter = ["error_registration_first_name"] ) %}
+                    <div class="text-danger d-block">{{message}}</div>
+                {% endfor %}
                 <label>Last Name:</label>
                 <input type="text" name="last_name">
+                {% for message in get_flashed_messages( category_filter = ["error_registration_last_name"] ) %}
+                    <div class="text-danger d-block">{{message}}</div>
+                {% endfor %}
                 <label>Email:</label>
                 <input type="email" name="email">
+                {% for message in get_flashed_messages( category_filter = ["error_registration_email"] ) %}
+                    <div class="text-danger d-block">{{message}}</div>
+                {% endfor %}
                 <label>Password:</label>
                 <input type="password" name="password">
+                {% for message in get_flashed_messages( category_filter = ["error_registration_password"] ) %}
+                    <div class="text-danger d-block">{{message}}</div>
+                {% endfor %}
                 <label>Confirm Password:</label>
                 <input type="password" name="confirm_pw">
+                {% for message in get_flashed_messages( category_filter = ["error_registration_confirm_pw"] ) %}
+                    <div class="text-danger d-block">{{message}}</div>
+                {% endfor %}
                 <input type="hidden" name="username" value="">
                 <input type="hidden" name="about" value="">
                 <input type="hidden" name="grade_level" value="5">
-                <button class="btn btn-success">Register</button>
-                <button class="btn btn-secondary" onclick="closeReg()">Cancel</button>
+                <div class="d-grid gap-2">
+                    <input type="submit" value="Register" class="btn btn-success mx-5 mt-3" type="button"/>
+                    <button class="btn btn-secondary mx-5 my-2" type="button" onclick="closeReg()">Cancel</button>
+                </div>
             </form>
         </div>
         <div id="loginForm" class="forms">
-            <form action="">
+            <form action="/login" method="POST">
                 <h2>Please Log In</h2>
                 <label>Email:</label>
-                <input type="email" name="email">
+                <input type="email" name="email" required>
+                {% for message in get_flashed_messages( category_filter = ["error_login_credentials"] ) %}
+                    <div class="text-danger d-block">{{message}}</div>
+                {% endfor %}
                 <label>Password:</label>
                 <input type="password" name="password">
-                <button class="btn btn-primary">Login</button>
-                <p class="btn btn-secondary" onclick="closeLogin()">Cancel</p>
+                {% for message in get_flashed_messages( category_filter = ["error_login_credentials"] ) %}
+                    <div class="text-danger d-block">{{message}}</div>
+                {% endfor %}
+                <div class="d-grid gap-2">
+                    <input type="submit" value="Login" class="btn btn-success mx-5 mt-3" type="button" />
+                    <button class="btn btn-secondary mx-5 my-2" type="button" onclick="closeLogin()">Cancel</button>
+                </div>
             </form>
         </div>
     </div>

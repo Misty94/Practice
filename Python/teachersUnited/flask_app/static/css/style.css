@@ -16,6 +16,20 @@
 
 .forms{
     display: none;
-    /* opacity: 0;
-    transform: translate(-50%, -50%); */
+    border: 10px solid saddlebrown;
+    width: 500px;
+    margin: 0px auto;
+    text-align: center;
+    background-image: url(https://media.istockphoto.com/id/484715057/photo/blank-blackboard.jpg?s=612x612&w=0&k=20&c=33MGy01QPrTiE6LMF8Rb2NaSBzmpLPcUDyFKnWNIPOM=);
+    color: snow;
+    font-size: 1.1rem;
+}
+
+form > label{
+    display: block;
+    margin: 5px 0px;
+}
+
+button{
+    display: block;
 }
