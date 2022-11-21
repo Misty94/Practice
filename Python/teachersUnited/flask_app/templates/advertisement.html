@@ -11,18 +11,21 @@
 </head>
 <body>
     <div class="container">
-        <div class="d-flex justify-content-between align-items-center p-2 text-light bg-dark" id="ad">
+        <div class="d-flex justify-content-between align-items-center p-2 text-light bg-dark">
             <button class="btn btn-success" onclick="openReg()">Register</button>
             <h2>Teachers United</h2>
             <button class="btn btn-primary" onclick="openLogin()">Login</button>
         </div>
-        <div class="text-center">
+        <div class="text-center mt-3 bg-dark text-light" id="ad">
+            <h3 class="mt-3">Calling ALL Teachers of the World -- Let's Unite Together</h3>
             <h4>Join <strong>Teachers United</strong> where teachers from all over the world can connect with each other!</h4>
-            <p>Teachers United is a way for teachers all over the world to connect with each other, give or recieve advice, share stories, etc...</p>
+            <p>Our goal is to provide a place where teachers from all over the world can unite together and connect.</p>
+            <p>Please share stories from the classroom, ask for advice, connect and send messages to teachers from all over.</p>
+            <p>Teaching Quotes Go Here</p>
         </div>
-        <div id="regForm" class="forms">
+        <div id="regForm" class="position-fixed start-50 translate-middle">
             <form action="/register" method="POST">
-                <h2>Register Now</h2>
+                <h2 class="mt-2">Register Now</h2>
                 <label>First Name:</label>
                 <input type="text" name="first_name">
                 {% for message in get_flashed_messages( category_filter = ["error_registration_first_name"] ) %}
@@ -57,9 +60,9 @@
                 </div>
             </form>
         </div>
-        <div id="loginForm" class="forms">
+        <div id="loginForm" class="position-fixed start-50 translate-middle">
             <form action="/login" method="POST">
-                <h2>Please Log In</h2>
+                <h2 class="mt-2">Please Log In</h2>
                 <label>Email:</label>
                 <input type="email" name="email" required>
                 {% for message in get_flashed_messages( category_filter = ["error_login_credentials"] ) %}
