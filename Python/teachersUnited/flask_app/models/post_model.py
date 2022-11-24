@@ -1,5 +1,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app import DATABASE
+from flask_app.models.user_model import User
 
 class Post:
     def __init__(self, data):
@@ -26,8 +27,17 @@ class Post:
 
         results = connectToMySQL( DATABASE ).query_db(query)
         print (results)
-        
+
         posts = []
-        for post in results:
-            posts.append(cls(post))
+        for row in results:
+            current_post = cls(row)
+            user_data = {
+                **row,
+                "created_at": row['users.created_at'],
+                "updated_at": row['users.updated_at'],
+                "id": row['users.id']
+            }
+            current_user = User(user_data)
+            current_post.user = current_user
+            posts.append(current_post)
         return posts

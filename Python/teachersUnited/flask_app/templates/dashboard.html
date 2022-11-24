@@ -14,11 +14,11 @@
         <div class="d-flex justify-content-between align-items-center p-2 text-light bg-dark">
             <button class="btn btn-info">My Profile</button>
             <h2>Welcome to Teachers United, {{session['first_name']}}!</h2>
-            <button class="btn btn-danger"><a href="/logout"></a>Logout</button>
+            <a href="/logout"><button class="btn btn-danger">Logout</button></a>
         </div>
         <div>
             {% for post in posts %}
-                <p>{{post.user}} said:</p>
+                <p>{{post.user.first_name}} said:</p>
                 <p>{{post.title}}</p>
                 <p>{{post.content}}</p>
             {% endfor %}
