@@ -26,8 +26,7 @@ class Post:
         query += "WHERE posts.user_id = users.id;"
 
         results = connectToMySQL( DATABASE ).query_db(query)
-        print (results)
-
+        # print (results)
         posts = []
         for row in results:
             current_post = cls(row)

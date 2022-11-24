@@ -9,3 +9,10 @@ def display_dashboard():
     
     posts = Post.get_all_with_users()
     return render_template("dashboard.html", posts = posts)
+
+
+@app.route('/create/post', methods=['POST'])
+def process_post():
+    if 'email' not in session:
+        return redirect('/')
+    

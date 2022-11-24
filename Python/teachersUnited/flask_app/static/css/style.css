@@ -45,3 +45,7 @@ form > label{
 button{
     display: block;
 }
+
+#dashboard{
+    margin: 0px auto;
+}
