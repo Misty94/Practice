@@ -56,3 +56,15 @@ def process_login():
 def logout():
     session.clear()
     return redirect('/')
+
+
+@app.route('/profile/<int:id>')
+def display_profile(id):
+    if 'email' not in session:
+        return redirect('/')
+
+    data = {
+        "id": id
+    }
+    one_user = User.get_one(data)
+    return render_template("profile.html", one_user = one_user)

@@ -16,7 +16,7 @@
                 <h2>Welcome to Teachers United, {{session['first_name']}}!</h2>
             </div>
             <div>
-                <button class="btn btn-info">My Profile</button>
+                <a href="/profile/{{session['user_id']}}"><button class="btn btn-info">My Profile</button></a>
                 <a href="/logout"><button class="btn btn-danger">Logout</button></a>
             </div>
         </div>
@@ -24,16 +24,18 @@
             <div id="dashboard">
                 <form action="">
                     <label>Give Your Post a Title:</label>
-                    <input type="text" name="title" placeholder="What's your post about?">
+                    <input type="text" name="title" size="35" placeholder="What's your post about?">
                     <textarea name="content" cols="45" rows="5" placeholder="Connect with other teachers here!" class="d-block"></textarea>
                     <button class="btn btn-success">Post</button>
                 </form>
             </div>
-            <div>
+            <div class="w-50">
                 {% for post in posts %}
-                    <p>{{post.user.first_name}} said:</p>
-                    <p>{{post.title}}</p>
-                    <p class="bg-light text-dark">{{post.content}}</p>
+                    <p class="text-end">{{post.user.first_name}} said:</p>
+                    <div class="bg-info text-dark">
+                        <p class="fs-4">{{post.title}}</p>
+                        <p>{{post.content}}</p>
+                    </div>
                 {% endfor %}
             </div>
         </div>

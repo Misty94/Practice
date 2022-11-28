@@ -36,6 +36,17 @@ class User:
         else:
             return False
 
+    @classmethod
+    def get_one(cls, data):
+        query = "SELECT * "
+        query += "FROM users "
+        query += "WHERE id = %(id)s;"
+
+        results = connectToMySQL( DATABASE ).query_db(query, data)
+        if len(results) < 1:
+            return False
+        return cls(results[0])
+
     @staticmethod
     def validate_user(data):
         is_valid = True
