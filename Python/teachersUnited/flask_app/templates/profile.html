@@ -21,23 +21,37 @@
             </div>
         </div>
         <div class="bg-dark text-light my-4 p-3" id="ad">
-            <h2>{{one_user.first_name}} {{one_user.last_name}}</h2>
-            <p>Email: {{one_user.email}}</p>
-            {% if one_user.about != "" %}
-                <p>About Me:</p>
-                <p>{{one_user.about}}</p>
-            {% elif one_user.id == session['user_id'] %}
-                <p>You don't have an About Me section yet! Add some details about you and your teaching experience.</p>
-            {% else: %}
-                <p>{{one_user.first_name}} doesn't have an About Me section yet.</p>
-            {% endif %}
-            {% if one_user.grade_level != 5 %}
-                <p>Grade Level: {{one_user.grade_level}}</p>
-            {% elif one_user.id == session['user_id'] %}
-                <p>You haven't set your grade level yet! Choose the option that you've taught the longest.</p>
-            {% else: %}
-                <p>{{one_user.first_name}} hasn't shared their grade level yet.</p>
-            {% endif %}
+            <div>
+                <h2>{{one_user.first_name}} {{one_user.last_name}}</h2>
+                <p>Email: {{one_user.email}}</p>
+                {% if one_user.about != "" %}
+                    <p>About Me:</p>
+                    <p>{{one_user.about}}</p>
+                {% elif one_user.id == session['user_id'] %}
+                    <p>You don't have an About Me section yet! Add some details about you and your teaching experience.</p>
+                {% else: %}
+                    <p>{{one_user.first_name}} doesn't have an About Me section yet.</p>
+                {% endif %}
+                {% if one_user.grade_level != 5 %}
+                    <p>Grade Level: {{one_user.grade_level}}</p>
+                {% elif one_user.id == session['user_id'] %}
+                    <p>You haven't set your grade level yet! Choose the option that you've taught the longest.</p>
+                {% else: %}
+                    <p>{{one_user.first_name}} hasn't shared their grade level yet.</p>
+                {% endif %}
+            </div>
+            <hr>
+            <div>
+                {% if one_user.id != session['user_id'] %}
+                <h4>Leave a message for {{one_user.first_name}}</h4>
+                <form action="">
+                    <textarea name="content" cols="100" rows="3"></textarea>
+                    <input type="hidden" name="user_id" value="{{session.user_id}}">
+                    <input type="hidden" name="friend_id" value="{{one_user.id}}">
+                    <button class="btn btn-success">Post</button>
+                </form>
+                {% endif %}
+            </div>
         </div>
     </div>
 </body>
