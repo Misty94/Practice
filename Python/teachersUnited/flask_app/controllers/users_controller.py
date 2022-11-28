@@ -1,6 +1,7 @@
 from flask_app import app
 from flask import render_template, request, redirect, session, flash
 from flask_app.models.user_model import User
+from flask_app.models.message_model import Message
 from flask_bcrypt import Bcrypt
 
 bcrypt = Bcrypt(app)
@@ -66,5 +67,9 @@ def display_profile(id):
     data = {
         "id": id
     }
+    # data2 = {
+    #     "id": session['user_id']
+    # }
     one_user = User.get_one(data)
-    return render_template("profile.html", one_user = one_user)
+    messages = Message.get_my_messages(data)
+    return render_template("profile.html", one_user = one_user, messages = messages)

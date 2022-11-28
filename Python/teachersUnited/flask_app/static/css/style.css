@@ -46,9 +46,10 @@ button{
     display: block;
 }
 
-#dashboard{
+/* #dashboard{
     margin: 0px auto;
-}
+    width: 600px;
+} */
 
 #posts{
     background-image: url(https://media.istockphoto.com/id/484715057/photo/blank-blackboard.jpg?s=612x612&w=0&k=20&c=33MGy01QPrTiE6LMF8Rb2NaSBzmpLPcUDyFKnWNIPOM=);

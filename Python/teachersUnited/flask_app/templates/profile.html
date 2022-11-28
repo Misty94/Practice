@@ -29,11 +29,23 @@
                     <p>{{one_user.about}}</p>
                 {% elif one_user.id == session['user_id'] %}
                     <p>You don't have an About Me section yet! Add some details about you and your teaching experience.</p>
+                    <form action="">
+                        <textarea name="about" cols="60" rows="3"></textarea>
+                        <button class="btn btn-primary">Post</button>
+                    </form>
                 {% else: %}
                     <p>{{one_user.first_name}} doesn't have an About Me section yet.</p>
                 {% endif %}
                 {% if one_user.grade_level != 5 %}
-                    <p>Grade Level: {{one_user.grade_level}}</p>
+                    {% if one_user.grade_level == 0 %}
+                        <p>Grade Level: Elementary</p>
+                    {% elif one_user.grade_level == 1 %}
+                        <p>Grade Level: Middle School</p>
+                    {% elif one_user.grade_level == 2 %}
+                        <p>Grade Level: Secondary / High School</p>
+                    {% elif one_user.grade_level == 3 %}
+                        <p>Grade Level: Postsecondary / University</p>
+                    {% endif %}
                 {% elif one_user.id == session['user_id'] %}
                     <p>You haven't set your grade level yet! Choose the option that you've taught the longest.</p>
                 {% else: %}
@@ -43,14 +55,28 @@
             <hr>
             <div>
                 {% if one_user.id != session['user_id'] %}
-                <h4>Leave a message for {{one_user.first_name}}</h4>
-                <form action="">
-                    <textarea name="content" cols="100" rows="3"></textarea>
-                    <input type="hidden" name="user_id" value="{{session.user_id}}">
-                    <input type="hidden" name="friend_id" value="{{one_user.id}}">
-                    <button class="btn btn-success">Post</button>
-                </form>
+                    <h4>Leave a message for {{one_user.first_name}}</h4>
+                    <form action="">
+                        <textarea name="content" cols="100" rows="3"></textarea>
+                        <input type="hidden" name="user_id" value="{{session.user_id}}">
+                        <input type="hidden" name="friend_id" value="{{one_user.id}}">
+                        <button class="btn btn-success">Post</button>
+                    </form>
                 {% endif %}
+            </div>
+            <div class="w-50">
+                {% for message in messages %}
+                    <div id="posts" class="p-3 mt-3">
+                        <h5><a href="/profile/{{message.user_id}}">{{message.user}}</a> wrote: </h5>
+                        <p>{{message.content}}</p>
+                    </div>
+                    <div class="mt-3 align-end">
+                        <form action="">
+                            <textarea name="content" cols="74" rows="3" placeholder="Write a response"></textarea>
+                            <button class="btn btn-success">Post</button>
+                        </form>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>
