@@ -25,13 +25,13 @@
                 <form action="/create/post" method="POST">
                     <label>Give Your Post a Title:</label>
                     <input type="text" name="title" size="35" placeholder="What's your post about?">
-                    <textarea name="content" cols="70" rows="5" placeholder="Connect with other teachers here!" class="d-block"></textarea>
+                    <textarea name="content" cols="70" rows="5" placeholder="Share your teaching experiences here!" class="d-block"></textarea>
                     <button class="btn btn-success mt-2">Share</button>
                 </form>
             </div>
-            <div class="w-50">
+            <div>
                 {% for post in posts %}
-                    <h6 class="text-end mt-2"><a href="/profile/{{post.user.id}}">{{post.user.first_name}}</a> wrote on {{post.created_at.strftime("%b %d %Y")}}:</h6>
+                    <h6 class="text-end mt-3"><a href="/profile/{{post.user.id}}">{{post.user.first_name}}</a> wrote on {{post.created_at.strftime("%b %d %Y")}}:</h6>
                     <div id="posts" class="p-3">
                         <p class="fs-4">{{post.title}}</p>
                         <p>{{post.content}}</p>

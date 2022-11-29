@@ -72,14 +72,19 @@ def display_profile(id):
     return render_template("profile.html", one_user = one_user, messages = messages)
 
 
-@app.route('/create/about', methods=['POST'])
-def process_about():
+@app.route('/create/profile/<int:id>', methods=['POST'])
+def process_profile(id):
     if 'email' not in session:
         return redirect('/')
+
+    used_username = User.get_one_by_username(request.form)
+    if used_username != False:
+        flash("This username is already in use; please choose another.", "error_profile_username")
+        return redirect(f'/profile/{id}')
     
-    data = {
+    profile_data = {
         **request.form,
-        "user_id": session['user_id']
+        "id": id
     }
-    User.save(data)
-    return redirect('/dashboard')
+    User.finish_profile(profile_data)
+    return redirect(f'/profile/{id}')

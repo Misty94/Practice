@@ -21,19 +21,15 @@
             </div>
         </div>
         <div class="bg-dark text-light my-4 p-3" id="ad">
-            <div>
+            <div id="profile" class="p-3">
                 <h2>{{one_user.first_name}} {{one_user.last_name}}</h2>
                 <p>Email: {{one_user.email}}</p>
+                {% if one_user.username != "" %}
+                    <p>Username: {{one_user.username}}</p>
+                {% endif %}
                 {% if one_user.about != "" %}
-                    <p>About Me:</p>
                     <p>{{one_user.about}}</p>
-                {% elif one_user.id == session['user_id'] %}
-                    <p>You don't have an About Me section yet! Add some details about you and your teaching experience.</p>
-                    <form action="/create/about" method="POST">
-                        <textarea name="about" cols="60" rows="3"></textarea>
-                        <button class="btn btn-primary">Submit</button>
-                    </form>
-                {% else: %}
+                {% elif one_user.id != session['user_id'] %}
                     <p>{{one_user.first_name}} doesn't have an About Me section yet.</p>
                 {% endif %}
                 {% if one_user.grade_level != 5 %}
@@ -46,14 +42,23 @@
                     {% elif one_user.grade_level == 3 %}
                         <p>Grade Level: Postsecondary / University</p>
                     {% endif %}
-                {% elif one_user.id == session['user_id'] %}
-                    <p>You haven't set your grade level yet! Choose the option that you've taught the longest.</p>
-                    <form action="">
-                        <select name="grade_level" value=""></select>
-                        <button class="btn btn-success">Submit</button>
+                {% endif %}
+                {% if one_user.id == session['user_id'] and one_user.about == "" %}
+                    <p class="text-warning">{{one_user.first_name}}, spruce up your profile by adding some more information! Add some details about you and your teaching experience in your About Me section. Set your grade level to the option that you've taught the longest. Plus, add a username.</p>
+                    <form action="/create/profile/{{one_user.id}}" method="POST">
+                        <label>About Me:</label>
+                        <textarea name="about" cols="60" rows="3"></textarea>
+                        <label>Grade Level:</label>
+                        <select name="grade_level">
+                            <option value="0">Elementary</option>
+                            <option value="1">Middle School</option>
+                            <option value="2">Secondary / High School</option>
+                            <option value="3">Postsecondary / University</option>
+                        </select>
+                        <label>Username:</label>
+                        <input type="text" name="username">
+                        <button class="btn btn-primary">Submit</button>
                     </form>
-                {% else: %}
-                    <p>{{one_user.first_name}} hasn't shared their grade level yet.</p>
                 {% endif %}
             </div>
             <hr>
@@ -68,17 +73,17 @@
                     </form>
                 {% endif %}
             </div>
-            <div class="w-50">
+            <div class="w-75">
                 {% for message in messages %}
                     <div id="posts" class="p-3 mt-3">
                         <h5><a href="/profile/{{message.user_id}}">{{message.user}}</a> wrote: </h5>
                         <p>{{message.content}}</p>
                     </div>
-                    <div class="mt-3 align-end">
+                    <div class="mt-3">
                         {% if message.friend_id == session['user_id'] %}
-                            <form action="">
+                            <form action="" class="d-flex justify-content-end align-items-center">
                                 <textarea name="content" cols="74" rows="3" placeholder="Write a response"></textarea>
-                                <button class="btn btn-primary">Post</button>
+                                <button class="btn btn-primary ms-3">Post</button>
                             </form>
                         {% endif %}
                     </div>

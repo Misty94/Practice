@@ -47,6 +47,27 @@ class User:
             return False
         return cls(results[0])
 
+    @classmethod
+    def finish_profile(cls, data):
+        query = "UPDATE users "
+        query += "SET username = %(username)s, about = %(about)s, grade_level = %(grade_level)s "
+        query += "WHERE id = %(id)s;"
+
+        return connectToMySQL( DATABASE ).query_db(query, data)
+
+    @classmethod
+    def get_one_by_username(cls, data):
+        query = "SELECT * "
+        query += "FROM users "
+        query += "WHERE username = %(username)s;"
+
+        result = connectToMySQL( DATABASE ).query_db(query, data)
+        if len(result) > 0:
+            curr_user = cls(result[0])
+            return curr_user
+        else:
+            return False
+
     @staticmethod
     def validate_user(data):
         is_valid = True
