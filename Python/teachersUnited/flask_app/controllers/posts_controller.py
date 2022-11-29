@@ -16,3 +16,13 @@ def display_dashboard():
 def process_post():
     if 'email' not in session:
         return redirect('/')
+    
+    if Post.validate_post(request.form) == False:
+        return redirect('/dashboard')
+    
+    data = {
+        **request.form,
+        "user_id": session['user_id']
+    }
+    Post.save(data)
+    return redirect('/dashboard')

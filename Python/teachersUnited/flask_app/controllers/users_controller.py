@@ -67,9 +67,19 @@ def display_profile(id):
     data = {
         "id": id
     }
-    # data2 = {
-    #     "id": session['user_id']
-    # }
     one_user = User.get_one(data)
     messages = Message.get_my_messages(data)
     return render_template("profile.html", one_user = one_user, messages = messages)
+
+
+@app.route('/create/about', methods=['POST'])
+def process_about():
+    if 'email' not in session:
+        return redirect('/')
+    
+    data = {
+        **request.form,
+        "user_id": session['user_id']
+    }
+    User.save(data)
+    return redirect('/dashboard')

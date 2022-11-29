@@ -1,6 +1,9 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app import DATABASE
 from flask_app.models.user_model import User
+from flask import flash
+# from datetime import datetime
+# import math
 
 class Post:
     def __init__(self, data):
@@ -10,6 +13,10 @@ class Post:
         self.user_id = data['user_id']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+
+    # def time_span(self):
+    #     now = datetime.now()
+    #     delta 
 
     @classmethod
     def save(cls, data):
@@ -23,7 +30,8 @@ class Post:
         query = "SELECT * "
         query += "FROM posts "
         query += "JOIN users "
-        query += "WHERE posts.user_id = users.id;"
+        query += "WHERE posts.user_id = users.id "
+        query += "ORDER BY posts.created_at DESC;"
 
         results = connectToMySQL( DATABASE ).query_db(query)
         # print (results)
@@ -40,3 +48,16 @@ class Post:
             current_post.user = current_user
             posts.append(current_post)
         return posts
+
+    @staticmethod
+    def validate_post(data):
+        is_valid = True
+
+        if len(data['title']) < 2:
+            flash("You must have a title with at least 2 characters.", "error_post_title")
+            is_valid = False
+        if len(data['content']) < 5:
+            flash("Your post must contain at least 5 characters.", "error_post_content")
+            is_valid = False
+        
+        return is_valid

@@ -29,9 +29,9 @@
                     <p>{{one_user.about}}</p>
                 {% elif one_user.id == session['user_id'] %}
                     <p>You don't have an About Me section yet! Add some details about you and your teaching experience.</p>
-                    <form action="">
+                    <form action="/create/about" method="POST">
                         <textarea name="about" cols="60" rows="3"></textarea>
-                        <button class="btn btn-primary">Post</button>
+                        <button class="btn btn-primary">Submit</button>
                     </form>
                 {% else: %}
                     <p>{{one_user.first_name}} doesn't have an About Me section yet.</p>
@@ -48,6 +48,10 @@
                     {% endif %}
                 {% elif one_user.id == session['user_id'] %}
                     <p>You haven't set your grade level yet! Choose the option that you've taught the longest.</p>
+                    <form action="">
+                        <select name="grade_level" value=""></select>
+                        <button class="btn btn-success">Submit</button>
+                    </form>
                 {% else: %}
                     <p>{{one_user.first_name}} hasn't shared their grade level yet.</p>
                 {% endif %}
@@ -71,10 +75,12 @@
                         <p>{{message.content}}</p>
                     </div>
                     <div class="mt-3 align-end">
-                        <form action="">
-                            <textarea name="content" cols="74" rows="3" placeholder="Write a response"></textarea>
-                            <button class="btn btn-success">Post</button>
-                        </form>
+                        {% if message.friend_id == session['user_id'] %}
+                            <form action="">
+                                <textarea name="content" cols="74" rows="3" placeholder="Write a response"></textarea>
+                                <button class="btn btn-primary">Post</button>
+                            </form>
+                        {% endif %}
                     </div>
                 {% endfor %}
             </div>
