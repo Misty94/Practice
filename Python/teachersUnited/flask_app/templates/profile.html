@@ -22,8 +22,7 @@
         </div>
         <div class="bg-dark text-light my-4 p-3" id="ad">
             <div id="profile" class="p-3">
-                <h2>{{one_user.first_name}} {{one_user.last_name}}</h2>
-                <p>Email: {{one_user.email}}</p>
+                <h2 class="d-inline">{{one_user.first_name}} {{one_user.last_name}}</h2><span> | </span><h5 class="d-inline"> Email: <span class="text-info">{{one_user.email}}</span></h5>
                 {% if one_user.username != "" %}
                     <p>Username: {{one_user.username}}</p>
                 {% endif %}
@@ -56,6 +55,9 @@
                             <option value="3">Postsecondary / University</option>
                         </select>
                         <label>Username:</label>
+                        {% for message in get_flashed_messages( category_filter = ["error_profile_username"] ) %}
+                            <div class="text-danger d-block">{{message}}</div>
+                        {% endfor %}
                         <input type="text" name="username">
                         <button class="btn btn-primary">Submit</button>
                     </form>
@@ -65,11 +67,11 @@
             <div>
                 {% if one_user.id != session['user_id'] %}
                     <h4>Leave a message for {{one_user.first_name}}</h4>
-                    <form action="">
+                    <form action="" class="d-flex align-items-center">
                         <textarea name="content" cols="100" rows="3"></textarea>
                         <input type="hidden" name="user_id" value="{{session.user_id}}">
                         <input type="hidden" name="friend_id" value="{{one_user.id}}">
-                        <button class="btn btn-success">Post</button>
+                        <button class="btn btn-success ms-3">Post</button>
                     </form>
                 {% endif %}
             </div>
