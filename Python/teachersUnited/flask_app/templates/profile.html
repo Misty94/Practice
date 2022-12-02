@@ -85,6 +85,8 @@
                         {% if message.friend_id == session['user_id'] %}
                             <form action="" class="d-flex justify-content-end align-items-center">
                                 <textarea name="content" cols="74" rows="3" placeholder="Write a response"></textarea>
+                                <input type="hidden" name="user_id" value="{{session.user_id}}">
+                                <input type="hidden" name="friend_id" value="{{one_user.id}}">
                                 <button class="btn btn-primary ms-3">Post</button>
                             </form>
                         {% endif %}
