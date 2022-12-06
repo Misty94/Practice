@@ -35,4 +35,8 @@ def process_message():
 
     data = {
         "content": request.form['content'],
+        "user_id": request.form['user_id'],
+        "friend_id": request.form['friend_id']
     }
+    Message.save(data)
+    return redirect('/dashboard')

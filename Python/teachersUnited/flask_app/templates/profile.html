@@ -43,10 +43,10 @@
                     {% endif %}
                 {% endif %}
                 {% if one_user.id == session['user_id'] and one_user.about == "" %}
-                    <p class="text-warning">{{one_user.first_name}}, spruce up your profile by adding some more information! Add some details about you and your teaching experience in your About Me section. Set your grade level to the option that you've taught the longest. Plus, add a username.</p>
+                    <p class="text-warning fs-5">{{one_user.first_name}}, spruce up your profile by adding some more information! Add some details about you and your teaching experience in your About Me section. Set your grade level to the option that you've taught the longest. Plus, add a username.</p>
                     <form action="/create/profile/{{one_user.id}}" method="POST">
                         <label>About Me:</label>
-                        <textarea name="about" cols="60" rows="3"></textarea>
+                        <textarea name="about" cols="60" rows="5"></textarea>
                         <label>Grade Level:</label>
                         <select name="grade_level">
                             <option value="0">Elementary</option>
@@ -59,7 +59,7 @@
                             <div class="text-danger d-block">{{message}}</div>
                         {% endfor %}
                         <input type="text" name="username">
-                        <button class="btn btn-primary">Submit</button>
+                        <button class="btn btn-primary d-block mt-2">Submit</button>
                     </form>
                 {% endif %}
             </div>
@@ -67,7 +67,7 @@
             <div>
                 {% if one_user.id != session['user_id'] %}
                     <h4>Leave a message for {{one_user.first_name}}</h4>
-                    <form action="" class="d-flex align-items-center">
+                    <form action="/create/message" method="POST" class="d-flex align-items-center">
                         <textarea name="content" cols="100" rows="3"></textarea>
                         <input type="hidden" name="user_id" value="{{session.user_id}}">
                         <input type="hidden" name="friend_id" value="{{one_user.id}}">
@@ -83,7 +83,7 @@
                     </div>
                     <div class="mt-3">
                         {% if message.friend_id == session['user_id'] %}
-                            <form action="" class="d-flex justify-content-end align-items-center">
+                            <form action="" method="POST" class="d-flex justify-content-end align-items-center">
                                 <textarea name="content" cols="74" rows="3" placeholder="Write a response"></textarea>
                                 <input type="hidden" name="user_id" value="{{session.user_id}}">
                                 <input type="hidden" name="friend_id" value="{{one_user.id}}">
