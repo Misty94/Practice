@@ -46,7 +46,7 @@
                     <p class="text-warning fs-5">{{one_user.first_name}}, spruce up your profile by adding some more information! Add some details about you and your teaching experience in your About Me section. Set your grade level to the option that you've taught the longest. Plus, add a username.</p>
                     <form action="/create/profile/{{one_user.id}}" method="POST">
                         <label>About Me:</label>
-                        <textarea name="about" cols="60" rows="5"></textarea>
+                        <textarea name="about" cols="60" rows="5" required></textarea>
                         <label>Grade Level:</label>
                         <select name="grade_level">
                             <option value="0">Elementary</option>
@@ -58,7 +58,7 @@
                         {% for message in get_flashed_messages( category_filter = ["error_profile_username"] ) %}
                             <div class="text-danger d-block">{{message}}</div>
                         {% endfor %}
-                        <input type="text" name="username">
+                        <input type="text" name="username" required>
                         <button class="btn btn-primary d-block mt-2">Submit</button>
                     </form>
                 {% endif %}
