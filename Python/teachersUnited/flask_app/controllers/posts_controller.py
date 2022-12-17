@@ -40,3 +40,9 @@ def process_message():
     }
     Message.save(data)
     return redirect('/dashboard')
+
+
+@app.route('/create/comment', methods=['POST'])
+def process_comment():
+    if 'email' not in session:
+        return redirect('/')
