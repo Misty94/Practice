@@ -1,6 +1,7 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app import DATABASE
 from flask import flash
+from flask_app.models.post_model import Post
 
 class Comment:
     def __init__(self, data):
@@ -17,6 +18,28 @@ class Comment:
         query += "VALUES ( %(content)s, %(user_id)s, %(post_id)s );"
 
         return connectToMySQL( DATABASE ).query_db(query, data)
+
+    @classmethod
+    def get_all_with_posts(cls):
+        query = "SELECT * "
+        query += "FROM comments "
+        query += "JOIN posts "
+        query += "WHERE comments.post_id = posts.id;"
+
+        results = connectToMySQL( DATABASE ).query_db(query)
+        comments = []
+        for row in results:
+            current_comment = cls(row)
+            post_data = {
+                **row,
+                "created_at": row['posts.created_at'],
+                "updated_at": row['posts.updated_at'],
+                "id": row['posts.id']
+            }
+            current_post = Post(post_data)
+            current_comment.post = current_post
+            comments.append(current_comment)
+        return comments
 
     @staticmethod
     def validate_comment(data):

@@ -40,6 +40,9 @@
                         <p class="fs-4">{{post.title}}</p>
                         <p>{{post.content}}</p>
                     </div>
+                    {% for comment in comments %}
+                        <p>{{comment.content}}</p>
+                    {% endfor %}
                 {% endfor %}
             </div>
         </div>

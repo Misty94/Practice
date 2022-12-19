@@ -10,7 +10,8 @@ def display_dashboard():
         return redirect('/')
     
     posts = Post.get_all_with_users()
-    return render_template("dashboard.html", posts = posts)
+    comments = Comment.get_all_with_posts()
+    return render_template("dashboard.html", posts = posts, comments = comments)
 
 
 @app.route('/create/post', methods=['POST'])
