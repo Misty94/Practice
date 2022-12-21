@@ -20,7 +20,7 @@ class Comment:
         return connectToMySQL( DATABASE ).query_db(query, data)
 
     @classmethod
-    def get_all_with_posts(cls):
+    def get_all_with_posts(cls): # keep working on this in MySQL - Left Join? Probably move to posts?
         query = "SELECT * "
         query += "FROM comments "
         query += "JOIN posts "
