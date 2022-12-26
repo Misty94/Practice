@@ -54,4 +54,4 @@ def process_comment():
         "user_id": session['user_id']
     }
     Comment.save(data)
-    return redirect('/dashboard')
+    return redirect('/dashboard') # Can we redirect to the page they were on - we would need the id???
