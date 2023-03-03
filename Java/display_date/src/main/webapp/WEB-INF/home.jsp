@@ -4,10 +4,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-    <title>Display Time Dashboard</title>
+<title>Insert title here</title>
 </head>
 <body>
-    <a href="/date">Date Template</a>
-    <a href="/time">Time Template</a>
+	<h1>Please, oh please let this work!</h1>
 </body>
 </html>
