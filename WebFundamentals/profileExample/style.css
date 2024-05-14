@@ -1,0 +1,42 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+#navbar{
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 100px; /* To push off from the left side of the screen */
+    font-family: sans-serif;
+    margin-bottom: 50px; /* To add space from the columns */
+}
+
+#nav-left{
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 18px 100px;
+    list-style-type: none;
+}
+
+#submit{
+    background-color: #17A2B8;
+    color: white;
+    padding: 5px 15px;
+    margin-right: 200px; 
+}
+
+#nav-left a{
+    padding: 30px;
+    color: white;
+    text-decoration: none;
+}
+
+#nav-h1{
+    font-size: 35px;
+    padding-right: 20px; /* This is to move "Profile" away from "Home" */
+}
