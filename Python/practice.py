@@ -123,3 +123,42 @@ for val in "Misty":
         continue
     print(val) # M i t y
 
+def say_hi(name): # name is the parameter 
+    return "Hi, " + name
+
+greeting = say_hi("Marlow")
+print(greeting)
+print(say_hi("Veronica"))
+print(say_hi("Darcy")) # Marlow, Veronica, and Darcy are the arguments
+
+# print() doesn't have any effect on your program; it is used for Debugging & to see what's happening!!!! Helps visualize your code
+
+# return statements mean Exit This Function Now - any remaining code will not be run & can pass a value to the outer scope
+# A function call is equal to whatever that function returns & that returned value remains after the function is completed
+
+# set defaults when declaring the parameters
+def be_cheerful(name='', repeat=2):
+    print(f"good morning {name}\n" * repeat)
+
+# No argument provided, the defaults are used:
+be_cheerful() # output: good morning (repeated on 2 lines) because the default is 2 & name is left off because it doesn't have a default value
+
+# 1 unnamed argument provided, that value is used as the first parameter & the second's default value is used
+be_cheerful("Emma") # output: good morning Emma (repeated on 2 lines)
+
+#1 named argument provided, that value is used for that parameter, & the other's default is used
+be_cheerful(name="Spinner") # output: good morning Spinner (repeated on 2 lines)
+be_cheerful(repeat=6) # output: good morning (repeated on 6 lines)
+
+# Both unnamed arguments provided - values assigned to parameters in order
+be_cheerful("Zoey", 3)
+
+be_cheerful(name="Miles", repeat=5) # output: good morning Miles (repeated on 5 lines)
+be_cheerful(name="Maya", repeat=1) # output: good morning Maya (only on 1 line)
+
+# Argument order doesn't matter if we are explicit when sending in our arguments!
+# Both named arguments provided = Values assigned to associated parameter
+be_cheerful(repeat=3, name="Zig")    # output: good morning Zig (repeated on 3 lines)
+
+
+
