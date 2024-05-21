@@ -133,6 +133,17 @@ print(say_hi("Darcy")) # Marlow, Veronica, and Darcy are the arguments
 
 # print() doesn't have any effect on your program; it is used for Debugging & to see what's happening!!!! Helps visualize your code
 
+def multiply(num_list, num):
+    print("num_list is", num_list, "and num is", num) # num_list is [2,4,10,16] and num is 5
+    for x in num_list:
+        print(x) # 2 # 4 # 10 # 16
+        x *= num
+        print(x) # 10 # 20 # 50 # 80
+    return num_list
+a = [2, 4, 10, 16]
+b = multiply(a,5)
+print(b) # [2,4,10,16]
+
 # return statements mean Exit This Function Now - any remaining code will not be run & can pass a value to the outer scope
 # A function call is equal to whatever that function returns & that returned value remains after the function is completed
 
@@ -146,7 +157,7 @@ be_cheerful() # output: good morning (repeated on 2 lines) because the default i
 # 1 unnamed argument provided, that value is used as the first parameter & the second's default value is used
 be_cheerful("Emma") # output: good morning Emma (repeated on 2 lines)
 
-#1 named argument provided, that value is used for that parameter, & the other's default is used
+# 1 named argument provided, that value is used for that parameter, & the other's default is used
 be_cheerful(name="Spinner") # output: good morning Spinner (repeated on 2 lines)
 be_cheerful(repeat=6) # output: good morning (repeated on 6 lines)
 
