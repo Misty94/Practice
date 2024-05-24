@@ -136,13 +136,23 @@ print(say_hi("Darcy")) # Marlow, Veronica, and Darcy are the arguments
 def multiply(num_list, num):
     print("num_list is", num_list, "and num is", num) # num_list is [2,4,10,16] and num is 5
     for x in num_list:
-        print(x) # 2 # 4 # 10 # 16
+        print("This is x:", x) # 2 # 4 # 10 # 16
         x *= num
-        print(x) # 10 # 20 # 50 # 80
+        print("X is now this:", x) # 10 # 20 # 50 # 80
+        print("This is num_list:", num_list) # num_list never changes! Google 'unable to modify list value in for loop python'
     return num_list
 a = [2, 4, 10, 16]
 b = multiply(a,5)
 print(b) # [2,4,10,16]
+
+# Now Fixed:
+def multipy2(num_list, num):
+    for x in range(len(num_list)):
+        num_list[x] *= num
+    return num_list
+a = [2, 4, 10, 16]
+b = multipy2(a, 5)
+print(b) #[10,20,50,80]
 
 # return statements mean Exit This Function Now - any remaining code will not be run & can pass a value to the outer scope
 # A function call is equal to whatever that function returns & that returned value remains after the function is completed
