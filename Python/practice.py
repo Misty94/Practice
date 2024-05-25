@@ -32,6 +32,7 @@ for i in range(0, len(stuff)):
 for v in stuff:
     print(v) # read, 748, diamond paint
 
+
 # Dictionaries = Group of key:value pairs. Indexed by unique keys which are used to access values
 
 # and checks that each expression on the left & right are both true
@@ -48,6 +49,7 @@ if not x:
 x = []
 if not x:
     print('evermore') # prints evermore
+
 
 # Loop Examples
 # One Argument
@@ -97,6 +99,7 @@ for i in range(lowNum, highNum):
     if i % mult == 0:
         print(i)
 
+
 # While Loops => include progress towards making the expression False, otherwise, it'll never end
 count = 0
 while count <= 5:
@@ -123,6 +126,7 @@ for val in "Misty":
         continue
     print(val) # M i t y
 
+
 def say_hi(name): # name is the parameter 
     return "Hi, " + name
 
@@ -130,6 +134,7 @@ greeting = say_hi("Marlow")
 print(greeting)
 print(say_hi("Veronica"))
 print(say_hi("Darcy")) # Marlow, Veronica, and Darcy are the arguments
+
 
 # print() doesn't have any effect on your program; it is used for Debugging & to see what's happening!!!! Helps visualize your code
 
@@ -154,8 +159,10 @@ a = [2, 4, 10, 16]
 b = multipy2(a, 5)
 print(b) #[10,20,50,80]
 
+
 # return statements mean Exit This Function Now - any remaining code will not be run & can pass a value to the outer scope
 # A function call is equal to whatever that function returns & that returned value remains after the function is completed
+
 
 # set defaults when declaring the parameters
 def be_cheerful(name='', repeat=2):
@@ -182,4 +189,13 @@ be_cheerful(name="Maya", repeat=1) # output: good morning Maya (only on 1 line)
 be_cheerful(repeat=3, name="Zig")    # output: good morning Zig (repeated on 3 lines)
 
 
+# When a function doesn't return anything, it outputs None
+def number_of_great_lakes():
+    print(5)
+x = number_of_great_lakes()
+print(x) # 5, None
 
+
+def concatenate(b,c):
+    return str(b) + str(c)
+print(concatenate(2,5)) # 25
