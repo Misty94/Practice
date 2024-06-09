@@ -2,12 +2,12 @@
 # Integers = Whole Numbers
 # Floating Numbers = Decimal Numbers
 # Strings = Literal Text
-# Tuples = Cannot be altered after creation, can hold a group of values, can contain mixed data types
+# Tuples = Cannot be altered after creation, can hold a group of values, can contain mixed data types, enclosed by ()
 
 dog = ('Tonks', 'german shepherd', 12, False)
 print(dog[1])
 
-# Lists = holds a group of values & can change. Stores a collection of related data
+# Lists = holds a group of values & can change. Stores a collection of related data & enclosed by []
 
 my_list = [44, 56, 2, 8, 12, 9, 50]
 
@@ -199,3 +199,204 @@ print(x) # 5, None
 def concatenate(b,c):
     return str(b) + str(c)
 print(concatenate(2,5)) # 25
+
+
+# Python Dictionaries:
+# unordered collection of objects
+# values are accessed using a key (typically a string)
+# can shrink or grow as needed & the contents can be modified & can be nested
+# sequence operations such as slice cannot be used
+
+# Keys are usually strings, but the values can be any type.
+# Keys are like the label for the stored value
+
+person = {"first": "Hermione", "last": "Granger", "age": 15, "is_witch": True}
+capitals = {} # an empty dictionary
+book = {  # another way to write out a dictionary
+    "title": "Harry Potter and the Order of the Phoenix",
+    "format": "hardcover",
+    "pages": 870,
+    "have_read": True
+}
+
+# Dictionaries do not have an .append(). Instead, you add new values by setting a new key (like you would a variable.)
+
+capitals["USA"] = "Washington D.C"
+capitals["Mexico"] = "Mexico City"
+capitals["France"] = "Paris"
+
+person2 = {"first": "George", "last": "Weasley", "age": 17, "is_wizard": True}
+print(person2)
+capitals["Sweden"] = "Stokholm"
+capitals["Russia"] = "Moscow"
+print(capitals)
+
+# Each Key Must Be Unique!
+# If you use an existing key as the index, the old value associated with that key is Overwritten by the new value.
+
+person3 = {"first": "Ada", "last": "Lovelace", "age": 42, "is_organ_donor": True}
+person3["email"] = "alovelace@codingdojo.com" # Adds a new key value pair for email to person
+person3["last"] = "Bobada" # Changes person's "last" value to "Bobada"
+print(person3)
+# The syntax is the same for adding a new value as it is for updating a value!
+
+# Testing For An Existing Key
+if "favorite_class" in person:
+    print("favorite_class already exists")
+else:
+    person["favorite_class"] = "all_of_them"
+print(person)
+
+if "Peru" not in capitals:
+    capitals["Peru"] = "Lima"
+else: 
+    print("Peru is already included.")
+print(capitals)
+
+
+full_name = person["first"] + " " + person["last"]
+print(full_name)
+
+
+cities_so_far = {"Charlotte": 2, "New Orleans": 1}
+new_visits = ["NYC", "Las Vegas", "Orlando", "New Orleans"]
+
+cities_so_far["NYC"] = 1
+cities_so_far["New Orleans"] += 1
+cities_so_far["Orlando"] = 1
+cities_so_far["Las Vegas"] = 1
+print(cities_so_far)
+
+
+# Removing Values
+value_removed = cities_so_far.pop("NYC") # This will remove the key "NYC" and return its value 1
+del cities_so_far['Las Vegas'] # This will delete the key, and not return anything
+print(cities_so_far)
+
+
+# Built In Functions
+print(len(cities_so_far)) # 3 - Gives the total length of the dictionary
+print(str(cities_so_far)) # Produces a string representation of a dictionary
+print(type(cities_so_far)) # dict - Returns the type of the passed variable
+
+# Built in Methods
+#.get(key, default=None) Safe way to get a value, if the key might not exist. Returns the value for the specified key or None (or a value you specify) if the key is not in the dictionary.
+x = cities_so_far.get("Orlando")
+print(x) # 1
+j = cities_so_far.get("Paris")
+print(j) # None
+# Add and update multiple key-value pairs at once, by passing in another dictionary of the pairs to update & add
+cities_so_far.update({"Boston": 1, "New Orleans": 3}) 
+print(cities_so_far)
+# Removes all elements from the dictionary
+cities_so_far.clear()
+print(cities_so_far) # {} empty dictionary
+
+
+# For Loops Through Dictionaries
+my_dict = {"name": "Elsbeth", "language": "Python"}
+for each_key in my_dict:
+    print(each_key) # name, language
+
+for each_key in my_dict:
+    print(my_dict[each_key]) # Elsbeth, Python
+
+us_capitals = {
+    "Virginia": "Richmond",
+    "North Carolina": "Raleigh",
+    "Texas": "Austin",
+    "New York": "Albany"
+}
+
+for key in us_capitals.keys():
+    print(key) # Virginia, North Carolina, Texas, New York
+
+for val in us_capitals.values():
+    print(val) # Richmond, Raleigh, Austin, Albany
+
+for key, val in us_capitals.items():
+    print(key, " = ", val) # Virginia = Richmond, North Carolina = Raleigh, etc.
+
+
+# Nesting - dictionaries can contain lists, tuples, and other dictionaries. Lists can contain dictionaries. It can be many levels deep.
+
+# List of Dictionaries
+users = [
+    {"first": "Katniss", "last": "Everdeen"}, # index 0
+    {"first": "Peeta", "last": "Mellark"}, # index 1
+    {"first": "Gale", "last": "Hawthorne"} # index 2
+]
+
+print(users[0]["last"]) # Everdeen
+
+# Dictionary of Lists
+resume_data = {
+        #           0           1           2
+    "skills": ["front-end", "back-end", "database"],
+    "languages": ["Python", "Java", "JavaScript"],
+    "hobbies": ["reading", "diamond painting", "making friendship bracelets"]
+}
+
+print(resume_data["skills"][1]) # back-end
+print(users[2]["first"]) # Gale
+
+# If it starts with {curly}, it's the start of a dictionary & you need a key to access something one level further into it
+# If it starts with [brackets], it's a list & you need an index to go one level further into it
+
+
+# Update Values in Dictionaries & Lists
+
+x = [ [5,2,3], [10,8,9] ] 
+students = [
+    {'first_name':  'Michael', 'last_name' : 'Jordan'},
+    {'first_name' : 'John', 'last_name' : 'Rosales'}
+]
+sports_directory = {
+    'basketball' : ['Kobe', 'Jordan', 'James', 'Curry'],
+    'soccer' : ['Messi', 'Ronaldo', 'Rooney']
+}
+z = [ {'x': 10, 'y': 20} ]
+
+
+# Change the value 10 in x to 15
+x[1][0] = 15
+print(x) # [5,2,3], [15,8,9]
+
+# Change the last_name of the first student from Jordan to Bryant
+students[0]["last_name"] = "Bryant"
+print(students)
+
+# In the sports directory, change Messi to Andres
+sports_directory["soccer"][0] = "Andres"
+print(sports_directory)
+
+# Change the value 20 in z to 30
+z[0]['y'] = 30
+print(z)
+
+
+# Iterate Through a List of Dictionaries
+# Create a function that given a list of dictionaries, the function loops through each dictionary in the list & prints each key and value.
+students = [
+        {'first_name':  'Michael', 'last_name' : 'Jordan'},
+        {'first_name' : 'John', 'last_name' : 'Rosales'},
+        {'first_name' : 'Mark', 'last_name' : 'Guillen'},
+        {'first_name' : 'KB', 'last_name' : 'Tonel'}
+    ]
+
+def iterateDictionary(students):
+    for i in range(len(students)): 
+        output = ""
+        for key, val in students[i].items():
+            output += f"{key} - {val}, "
+        print(output)
+
+print(iterateDictionary(students))
+
+
+# Get Values From a List of Dictionaires
+# Create a function that given a list of dictionaries and a key name, the function prints the value stored in that key for each dictionary
+
+def iterateDictionary2(key_name, students):
+    for i in range(len(students)):
+        pass
