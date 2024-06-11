@@ -378,16 +378,16 @@ print(z)
 # Iterate Through a List of Dictionaries
 # Create a function that given a list of dictionaries, the function loops through each dictionary in the list & prints each key and value.
 students = [
-        {'first_name':  'Michael', 'last_name' : 'Jordan'},
-        {'first_name' : 'John', 'last_name' : 'Rosales'},
-        {'first_name' : 'Mark', 'last_name' : 'Guillen'},
-        {'first_name' : 'KB', 'last_name' : 'Tonel'}
+        {'first_name':  'Reamus', 'last_name' : 'Lupin'},
+        {'first_name' : 'Sirius', 'last_name' : 'Black'},
+        {'first_name' : 'James', 'last_name' : 'Potter'},
+        {'first_name' : 'Severus', 'last_name' : 'Snape'}
     ]
 
-def iterateDictionary(students):
-    for i in range(len(students)): 
+def iterateDictionary(list):
+    for i in range(len(list)): 
         output = ""
-        for key, val in students[i].items():
+        for key, val in list[i].items():
             output += f"{key} - {val}, "
         print(output)
 
@@ -397,6 +397,129 @@ print(iterateDictionary(students))
 # Get Values From a List of Dictionaires
 # Create a function that given a list of dictionaries and a key name, the function prints the value stored in that key for each dictionary
 
-def iterateDictionary2(key_name, students):
-    for i in range(len(students)):
-        pass
+def iterateDictionary2(key_name, list):
+    for i in range(len(list)):
+        print(list[i][key_name])
+
+print(iterateDictionary2("first_name", students))
+print(iterateDictionary2("last_name", students))
+
+
+# Iterate Through a Dictionary with List Values
+# Create a function that given a dictionary whose values are all lists, prints the name of each key along with the size of its list
+# And then prints the associated values within each key's list
+
+hogwarts = {
+    'classes': ['Herbology', 'Potions', 'Defense Against the Dark Arts', 'Charms', 'Care of Magical Creatures', 'Transfiguration'],
+    'professors': ['Sprout', 'Snape', 'Lupin', 'Flitwick', 'Hagrid', 'McGonagall']
+}
+
+def printInfo(a_dict):
+    for each_key in a_dict:
+        print(f"{len(a_dict[each_key])} {each_key.upper()}")
+        for val in a_dict[each_key]:
+            print(val)
+
+print(printInfo(hogwarts))
+
+
+# Convert two Lists into a Dictionary
+keys = ['Ten', 'Twenty', 'Thirty']
+values = [10, 20, 30]
+
+new_dict = dict()
+
+for i in range(len(keys)):
+    new_dict.update({keys[i]: values[i]})
+print(new_dict) # {"Ten": 10, "Twenty": 20, "Thirty": 30}
+
+
+# Merge two Dictionaries into one
+dict1 = {'Ten': 10, 'Twenty': 20, 'Thirty': 30}
+dict2 = {'Thirty': 30, 'Forty': 40, 'Fifty': 50, 'Sixty': 60}
+
+merged_dict = dict1.copy()
+merged_dict.update(dict2)
+print(merged_dict) # {"Ten": 10, "Twenty": 20, "Thirty": 30, "Forty": 40, "Fifty": 50, "Sixty": 60}
+
+
+# Nested Dictionary = Print the value of key 'history' from the below dictionary
+sample_dict = {
+    "class": {
+        "student": {
+            "name": "Julie",
+            "grades": {
+                "physics": 70,
+                "history": 80
+            }
+        }
+    }
+}
+
+print(sample_dict['class']['student']['grades']['history']) # 80
+
+
+
+# OOP = Object Oriented Programming
+
+# Instance = an object that follows the pattern defined by its class
+# Attributes = characteristics shared by all instances of the class type
+# Methods = actions that an object can preform (functions that specifically belong to a class)
+# Constructor = a function that contains instructions for making a new instance of a class __init__
+# self = a placeholder for future instances
+
+class User:
+    def __init__(self):
+        self.first_name = "Tessa"
+        self.last_name = "Grey"
+        self.age = 17
+
+user_tessa = User() # Creating a new instance of the class
+print(user_tessa.first_name)
+user_2 = User() # Creating a new instance
+print(user_2.last_name)
+print(user_tessa) # location of the user object
+
+class Shoe:
+    def __init__(self): # the first parameter of an instance method within a class will be SELF
+        self.brand = "Nike"
+        self.type = 'tennis shoe' # the instance attributes are also indicated by self
+        self.price = 45.99
+        self.in_stock = True # SELF is a reference to the specific instance, not the generic class
+
+dress_shoe = Shoe()
+dress_shoe.type = "Ballet Flats"
+print(dress_shoe.type) # Ballet Flats
+
+# We want every shoe to have a brand, type, price, & status, but we don't want all of our shoes to have the same upon creation.
+
+class Shoe:
+    def __init__(self, brand, shoe_type, price): # Now the method has 4 parameters
+        self.brand = brand
+        self.type = shoe_type
+        self.price = price
+        self.in_stock = True # the status is set to True by default
+
+skater_shoe = Shoe("Vans", "Low-Top Trainers", 59.99)
+dress_shoe = Shoe("Jack & Jill Bootery", "Ballet Flats", 25.99)
+print(dress_shoe.price)
+skater_shoe.in_stock = False
+print(skater_shoe.in_stock)
+
+# Methods must be called from an instance of a class using dot notation
+
+class User:
+    def __init__(self, name, email):
+        self.name = name
+        self.email = email
+
+    def greeting(self): # adding a greeting method to the class
+        print(f"Hello, my name is {self.name}")
+
+elena = User("Elena", 'elena@tvd.com')
+bella = User("Bella", 'bella@twilight.com')
+
+elena.greeting() # prints Hello, my name is Elena
+
+# self
+# The first parameter of every method within a class should be self
