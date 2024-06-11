@@ -469,7 +469,7 @@ print(sample_dict['class']['student']['grades']['history']) # 80
 # self = a placeholder for future instances
 
 class User:
-    def __init__(self):
+    def __init__(self): # self = The first parameter of every method within a class should be self
         self.first_name = "Tessa"
         self.last_name = "Grey"
         self.age = 17
@@ -493,18 +493,58 @@ print(dress_shoe.type) # Ballet Flats
 
 # We want every shoe to have a brand, type, price, & status, but we don't want all of our shoes to have the same upon creation.
 
+# Class Attributes are defined outside of any instance methods (line 498)
 class Shoe:
+    shoe_store = "Misty's Shoe Emporium" # This is a class attribute. It is shared amount ALL instances of the class.
+
     def __init__(self, brand, shoe_type, price): # Now the method has 4 parameters
         self.brand = brand
         self.type = shoe_type
         self.price = price
         self.in_stock = True # the status is set to True by default
+    
+    # Takes a float/percent as an argument & reduces the price of that item by that percentage
+    def on_sale_by_percent(self, percent_off):
+        self.price = self.price * (1-percent_off)
+        return self # this was only added so I could practice chaining
+    
+    # Returns a total with tax added to the price
+    def total_with_tax(self, tax_rate):
+        tax = self.price * tax_rate
+        total = self.price + tax
+        return total # This method cannot be chained because it already returns something
+    
+    # Reduces the price by a fixed dollar amount
+    def cut_price_by(self, amount):
+        if amount < self.price:
+            self.price -= amount
+        else:
+            print("Price deduction too large.")
+        return self # this was only added to demonstrate chaining
 
 skater_shoe = Shoe("Vans", "Low-Top Trainers", 59.99)
 dress_shoe = Shoe("Jack & Jill Bootery", "Ballet Flats", 25.99)
 print(dress_shoe.price)
+skater_shoe.on_sale_by_percent(0.1) # On sale by 10%
+print(skater_shoe.price) # 53.991
 skater_shoe.in_stock = False
 print(skater_shoe.in_stock)
+my_shoe = Shoe("Converse", "Low-tops", 36.00)
+print(my_shoe.total_with_tax(0.05)) # 37.8
+my_shoe.cut_price_by(10)
+print(my_shoe.price) # 26.0
+
+# Chaining Methods - Attaching new method calls to the end of the previous one
+# For this to work, each method must return self (so each method call will now be equal to the instance that called it)
+# Chaining only works with methods that do not need to return anything
+
+dress_shoe.cut_price_by(5).on_sale_by_percent(0.2)
+print(dress_shoe.price) # 16.791
+
+my_shoe.shoe_store = "Belks" # This changes the class attribute fro this specific instance
+print(my_shoe.shoe_store)
+
+Shoe.shoe_store = "Dojo Shoes" # This changes the class attribute for the Entire Class
 
 # Methods must be called from an instance of a class using dot notation
 
@@ -521,5 +561,4 @@ bella = User("Bella", 'bella@twilight.com')
 
 elena.greeting() # prints Hello, my name is Elena
 
-# self
-# The first parameter of every method within a class should be self
+
