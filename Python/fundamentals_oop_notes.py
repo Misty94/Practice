@@ -466,7 +466,7 @@ print(sample_dict['class']['student']['grades']['history']) # 80
 # Attributes = characteristics shared by all instances of the class type
 # Methods = actions that an object can preform (functions that specifically belong to a class)
 # Constructor = a function that contains instructions for making a new instance of a class __init__
-# self = a placeholder for future instances
+# self = a placeholder for future instances / refers to the instance of the object
 
 class User:
     def __init__(self): # self = The first parameter of every method within a class should be self
@@ -495,8 +495,9 @@ print(dress_shoe.type) # Ballet Flats
 
 # Class Attributes are defined outside of any instance methods (line 498)
 class Shoe:
-    shoe_store = "Misty's Shoe Emporium" # This is a class attribute. It is shared amount ALL instances of the class.
+    shoe_store = "Misty's Shoe Emporium" # This is a class attribute. It is shared amoung ALL instances of the class.
 
+    # These methods are all Instance Methods
     def __init__(self, brand, shoe_type, price): # Now the method has 4 parameters
         self.brand = brand
         self.type = shoe_type
@@ -562,3 +563,43 @@ bella = User("Bella", 'bella@twilight.com')
 elena.greeting() # prints Hello, my name is Elena
 
 
+class BankAccount:
+    # both of these are Class Attributes
+    bank_name = "Gringotts"
+    all_accounts = []  # a List of all the accounts
+
+    def __init__(self, int_rate, balance):
+        self.int_rate = int_rate
+        self.balance = balance
+        BankAccount.all_accounts.append(self) # append each instance into the list of all accounts
+
+    def with_draw(self, amount):
+        if BankAccount.can_withdraw(self.balance, amount):
+            self.balance -= amount
+        else:
+            print("Insufficient Funds")
+        return self
+
+    # Class Methods belong to the class itself and not the instance.
+    @classmethod
+    def change_bank_name(cls, name): # Pass cls (which refers to the class) instead of self (which refers to the instance)
+        cls.bank_name = name
+    
+    # Class Methods have No Access to the instance attribute or any attribute that starts with self.
+    @classmethod
+    def all_balances(cls):
+        sum = 0
+        for account in cls.all_accounts:
+            sum += account.balance
+        return sum
+
+    # Static Methods have No Access to instance or class attributes
+    # If any existing values are needed, they need to be passed in as arguments
+    @staticmethod
+    def can_withdraw(balance, amount): # Has no access to any attribute, only what's passed into it
+        if (balance - amount) < 0:
+            return False
+        else:
+            return True
+    # Static Methods are a way to organize code so we D.R.Y (don't repeat yourself)
+    # They allow us to update all the checks from one place.
