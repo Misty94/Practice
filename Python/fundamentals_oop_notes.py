@@ -618,3 +618,37 @@ class User:
     def make_withdrawal(self, amount):
         self.account.with_draw(amount)
         print(self.account.balance)
+
+
+# Modules = Python files that end in .py which implement a set of functions & are imported
+# You can make an arithmetic.py that has:
+
+def add(x,y):
+    return x + y
+def multiply(x, y):
+    return x * y
+def subtract(x, y):
+    return x - y
+
+# Now I can make another file in the same directory/folder called calculations.py & import the arithmetic module into & run the functions:
+# import arithmetic
+# print(arithmetic.add(5,8))
+# print(arithmetic.multiply(10,7))
+# print(arithmetic.subtract(12,6))
+
+# Packages = a collection of modules (a folder) in directories that give the package a hierarchy
+
+# sample_project
+    # python_file.py
+    # my_modules (this is the package)
+        # __init__.py
+        # test_module.py
+        # another_module.py
+
+# There are 2 ways to import:
+
+# import my_modules.test_module
+# from my_modules import test_module
+
+# Namespace = which variables, functions, and classes are accessible to us at any given time during a program's execution.
+print(locals()) # this will print what variables are available in any given place & will be printed as a dictionary
