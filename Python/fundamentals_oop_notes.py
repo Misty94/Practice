@@ -603,3 +603,18 @@ class BankAccount:
             return True
     # Static Methods are a way to organize code so we D.R.Y (don't repeat yourself)
     # They allow us to update all the checks from one place.
+
+
+# There is an association between the User class and the BankAccount class. (A user has a bank account.)
+# We'll Encapsulate all the bank account information and Associate a user with a specific instance of a bank account.
+
+class User:
+    def __init__(self, name, email):
+        self.name = name
+        self.email = email
+        self.account = BankAccount(int_rate=0.02, balance=0) 
+        # the classes must either be defined in the same file or the other class must be referenced using an import statement
+    
+    def make_withdrawal(self, amount):
+        self.account.with_draw(amount)
+        print(self.account.balance)
