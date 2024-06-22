@@ -652,3 +652,107 @@ def subtract(x, y):
 
 # Namespace = which variables, functions, and classes are accessible to us at any given time during a program's execution.
 print(locals()) # this will print what variables are available in any given place & will be printed as a dictionary
+
+
+# 4 Pillars of OOP  ~ Encapsulation, Inheritance,Polymorphism, Abstraction
+
+# Encapsulation
+# Group code together into objects. Use classes (blue prints) to define what our objects are & how they behave
+# We encapsulate attributes & methods in our class.
+
+class CoffeeM:
+    def __init__(self,name):
+        self.name = name
+        self.water_temp = 200
+    
+    def brew_now(self,beans):
+        print(f"Using {beans}!")
+        print("Brew now brown cow!")
+    
+    def clean(self):
+        print("Cleaning!")
+
+
+# Inheritance
+# Pass along attributes & methods from one class into a sub-class or child class so we don't have to re-write code to make it work
+# Child classes can be more specific versions of their parent class. Using the key word 'super' will call methods
+
+class CappuccinoM( CoffeeM ):
+    def __init__(self,name):
+        super().__init__(name)
+        self.milk = "whole"
+    
+    def make_cappuccino(self,beans):
+        super().brew_now(beans)
+        print("Frothy!!!")
+
+
+# Polymorphism - 'many forms'
+# Child class can have a different version of a method than the Parent class. 
+
+class CappuccinoM( CoffeeM ):
+    def __init__(self,name):
+        super().__init__(name)
+        self.milk = "whole"
+    
+    def make_cappuccino(self,beans):
+        super().brew_now(beans)
+        print("Frothy!!!")
+    
+    def clean(self):
+        print("Cleaning the froth!")
+    # The CappuccinoM and the CoffeeM both have clean methods. 
+    # Depending on the class, the clean method will do different things.
+
+
+# Abstraction  - an extension of Encapsulation
+# We can hide attributes or methods that a class doesn't need to know about, so that class can do its job in a simpler manner
+
+class Barista:
+    def __init__(self,name):
+        self.name = name
+        self.cafe = CoffeeM("Cafe")
+
+    def make_coffee(self, beans):
+        self.cafe.brew_now(beans)
+
+
+# Inheritance - defining a new class based on another class
+# It allows one class to take on the attributes & methods from another class with little additional code
+# The child class can override or extend the functionality of the parent class
+
+
+# With the parent class in parentheses, both new classes have all the attributes & functionality of the parent class
+class CheckingAccount(BankAccount):
+    pass
+
+class RetirementAccount(BankAccount):
+    def __init__(self, int_rate, is_roth, balance=0):
+        # self.int_rate = int_rate
+        # self.balance = balance
+        super().__init__(int_rate,balance) # the parent class already does the 2 lines above, so we use super() to indicate we are using the parent's methods
+        self.is_roth = is_roth
+
+    def withdraw(self, amount, is_early):
+        if is_early:
+            amount = amount * 1.10
+        super().with_draw(amount) # call on the parent to do the part of the code that is the same
+        return self
+
+
+# Overriding = you want the child to behave completely differently than the parent
+# so you override the function by defining a function with the same name in the child class
+
+class Parent:
+    def method_a(self):
+        print("invoking PARENT method_a!")
+
+class Child(Parent):
+    def method_a(self): # this overrides the Parent method of the same name
+        print("invoking CHILD method_a!")
+
+dad = Parent()
+son = Child()
+dad.method_a() # invoking PARENT method_a! ~ it runs the Parent class' method_a because that variable (dad) is an instance of the Parent class
+son.method_a() # invoking CHILD method_a! ~ it runs the Child class' method_a because the variable (son) is an instance of the Child class
+# The Child overrides this method from the parent by defining its own version
