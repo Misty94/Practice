@@ -756,3 +756,102 @@ son = Child()
 dad.method_a() # invoking PARENT method_a! ~ it runs the Parent class' method_a because that variable (dad) is an instance of the Parent class
 son.method_a() # invoking CHILD method_a! ~ it runs the Child class' method_a because the variable (son) is an instance of the Child class
 # The Child overrides this method from the parent by defining its own version
+
+
+# Polymorphism - allows to specify common methods in an 'abstract' level & implement them in particular instances.
+# It's the process of using an operator or function in different ways for different data input
+
+# We'll use the Person class to demonstrate polymorphism
+# in which multiple classes inherit from the same class but behave in different ways
+class Person:
+    def pay_bill(self):
+        raise NotImplementedError
+# Millionaire inherits from Person
+class Millionaire(Person):
+    def pay_bill(self):
+        print("Here you go! Keep the change!")
+# Grad Student also inherits from the Person class
+class GradStudent(Person):
+    def pay_bill(self):
+        print("Can I owe you ten bucks or do the dishes?")
+
+# This pattern is useful when you know that each subclass of a parent class must define a specific behavior in a method
+# and you don't want to define a default behavior in the parent class (hence the pure virtual implementation in the parent)
+
+
+class Pet:
+
+    # implement __init__( name , type , tricks ):
+    def __init__(self, name , type, tricks, noise):
+        self.name = name
+        self.type = type
+        self.tricks = tricks
+        self.health = 100
+        self.energy = 50
+        self.noise = noise
+
+    # implement the following methods:
+    # sleep() - increases the pets energy by 25
+    def sleep(self):
+        self.energy += 25
+        return self
+
+    # eat() - increases the pet's energy by 5 & health by 10
+    def eat(self):
+        self.energy += 5
+        self.health += 10
+        return self
+
+    # play() - increases the pet's health by 5
+    def play(self):
+        self.health += 5
+        self.energy -= 15
+        return self
+
+    # noise() - prints out the pet's sound
+    def noise(self):
+        print(self.noise)
+
+
+
+class Ninja:
+    # implement __init__( first_name , last_name , treats , pet_food , pet )
+    def __init__(self, first_name, last_name , treats, pet_food, pet):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.treats = treats
+        self.pet_food = pet_food
+        self.pet = pet
+
+    # implement the following methods:
+    # walk() - walks the ninja's pet invoking the pet play() method
+    def walk(self):
+        self.pet.play()
+        return self
+
+    # feed() - feeds the ninja's pet invoking the pet eat() method
+    def feed(self):
+
+        if len(self.pet_food) > 0:
+            food = self.pet_food.pop()
+            print(f"Feeding {self.pet.name} {food}!")
+            self.pet.eat()
+        else:
+            print("Oh no!!! you need more pet food!")
+        return self
+
+    # bathe() - cleans the ninja's pet invoking the pet noise() method
+    def bathe(self):
+        self.pet.noise()
+
+my_treats = ['Hamburger','Bacon',"Steak"]
+my_pet_food = ['Chicken','Burger']
+
+scooby = Pet("Scooby Doo","Dog",['plays fetch','is lovable'],"Bark! Bark!")
+
+misty = Ninja("Misty","Strickland", my_treats, my_pet_food, scooby)
+
+misty.feed()
+misty.feed()
+misty.feed()
+misty.walk()
