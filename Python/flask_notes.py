@@ -56,3 +56,39 @@ app.run(debug=True, host="localhost", port=8000)
 
 # Routes - like a variable name we assign to a request - it communicates to the server what kind of information the client needs
 # The route name is attached to a route on our server that points towards a specific set of instructions.
+# These instructions contain information about how to interpret the dada being sent, operations that need to be completed, & the response that should be sent back
+# Every route has two parts: HTTP method (GET, POST, PUT, PATCH, DELETE) and the URL
+
+# adding another route to the server.py
+@app.route('/success')
+def success():
+    return "success"
+    
+    # app.run(debug=True) should be the very last statement! 
+
+# If the client requests localhost:5000/ the hello_world function will run
+# If the client requests localhost:5000/success the success function will run
+
+# Adding in variable rules:
+@app.route('/hello/<name>') # for a route '/hello/____' anything after '/hello/' gets passed as a variable 'name'
+def hello(name):
+    print(name)
+    return "Hello, " + name
+
+@app.route('/users/<username>/<id>') # for a route '/users/____/____', two parameters in the url get passed as username and id
+def show_user_profile(username, id):
+    print(username)
+    print(id)
+    return "username: " + username + ", id: " + id
+
+# Type Converters - by default, a route variable is passed as a string. Designate int as the converter to indicate an integer is being passed
+# Here the second parameter is cast into an integer before being passed to the function
+@app.route('/hello/<name>/<int:num>') 
+def hello(name, num):
+    return f"Hello, {name * num}" # localhost:5000/hello/Misty/3 ---> Hello, MistyMistyMisty
+
+# In python, when you multiply a string by an integer, it'll make a longer string with the original string repeated num number of times
+# In python, if you multiply a string by another string, it will give an error
+
+# If you went to localhost:5000/hello/Misty/rainbow ---> 404 Not Found --- would happen because 'rainbow' cannot be converted into an integer
+
