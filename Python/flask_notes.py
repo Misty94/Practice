@@ -1,3 +1,4 @@
+# ----------------INSTALLATION COMMANDS ----------------------------------------------------------------------
 # The HTTP request is made & hits the server.py file
 # Based on the route we give, it gathers up any HTML, CSS, JS, & data
 # Then it responds back to the browser with what we return
@@ -54,6 +55,8 @@ if __name__=="__main__":   # Ensure this file is being run directly and not from
 # Changing the port if localhost:5000 is already in use & can't be closed (8000 is a good alternative)
 app.run(debug=True, host="localhost", port=8000)
 
+# -------------------------------------ROUTES------------------------------------------------------------------------------------------------
+
 # Routes - like a variable name we assign to a request - it communicates to the server what kind of information the client needs
 # The route name is attached to a route on our server that points towards a specific set of instructions.
 # These instructions contain information about how to interpret the dada being sent, operations that need to be completed, & the response that should be sent back
@@ -92,3 +95,119 @@ def hello(name, num):
 
 # If you went to localhost:5000/hello/Misty/rainbow ---> 404 Not Found --- would happen because 'rainbow' cannot be converted into an integer
 
+# ---------------------------------------------TEMPLATES------------------------------------------------------------
+
+# In Flask, create a directory alongside the server.py file called templates where all the HTML files will go
+
+from flask import Flask, render_template  # added render_template!
+app = Flask(__name__)                     
+
+@app.route('/')                           
+def hello_world():
+    # Instead of returning a string, 
+    # we'll return the result of the render_template method, passing in the name of our HTML file
+    return render_template('index.html')  
+    
+if __name__=="__main__":
+    app.run(debug=True)                   
+
+# ------------------------------------------JINJA---------------------------------------------------------------------
+
+# Jinja --- Flask's templating engine (has a lot of great built-in features that allow dynamic information on HTML pages)
+
+# Since the browser doesn't understand Python code, the render_template function sends the HTML file along with any data passed through the template engine to resolve any code into HTML
+# The final product is the response to the client
+
+@app.route('/hello')
+def hello():
+    return render_template("index.html", phrase="Hello! ", times = 5)
+
+# Two Special Inputs to use to insert Python-like code into our Flask Templates
+# {{ some variable }}
+# {% some expression %}
+
+# project_folder/templates/index.html
+
+# <p> Phrase: {{ phrase }} </p> 
+# <p> Times: {{ times }} </p>
+
+# {% for x in range(0, times): %}
+    # <p> {{ phrase }} </p>
+# {% endfor %}
+
+# {% if phrase == "Hello!" %}
+    # <p> The phrase says hello </p>
+# {% endif %}
+
+# For Loops -- How many times something gets rendered
+# If Statement -- Control what gets rendered
+# Printing values to our rendered html
+
+# Try to limit the amount of logic put into the templates & do the bulk of the logic in the Python code!
+# Putting too much logic in your template may slow down the server response time
+
+# -----------------------------------------STATIC-------------------------------------------------------------
+
+# Static Content --- any content that can be served up to the client without being modified, generated, or processed by the server
+# Create a directory called static to house all Stylesheets, Images, and JavaScript files
+
+# Inside a static folder is: my_img.png, my_script.js, and my_style.css
+
+# On your HTML file:
+# <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='my_style.css') }}">     --- linking a css stylesheet
+
+# <script type="text/javascript" src="{{ url_for('static', filename='my_script.js') }}"></script>     --- linking a javascript file
+
+# <img src="{{ url_for('static', filename='my_img.png') }}">     --- linking an image
+
+
+# For better organization, inside the static folder, create directories called css, js, and img
+
+# <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/my_style.css') }}">     --- linking a css stylesheet
+
+# <script type="text/javascript" src="{{ url_for('static', filename='js/my_script.js') }}"></script>     --- linking a javascript file
+
+# <img src="{{ url_for('static', filename='img/my_img.png') }}">     --- linking an image
+
+# Note: When using static files, your browser will likely cache them, so if needed while updating these files, do a hard refresh of the page
+# Hard Refresh on Windows: ctrl + shift + r
+# Hard Refresh on Mac: cmd + shift + r
+
+
+# -----------LISTS IN JINJA-------------------------------------------------------------
+
+# In server.py
+@app.route('/lists')
+def render_lists():
+    # Soon enough, we'll get data from a database, but for now, we're hard coding data
+    student_info = [
+        {'name' : 'Michael', 'age' : 35},
+        {'name' : 'John', 'age' : 30 },
+        {'name' : 'Mark', 'age' : 25},
+        {'name' : 'KB', 'age' : 27}
+    ]
+    return render_template("lists.html", random_numbers = [3,1,5], students = student_info)
+
+# project_folder/templates/lists.html
+# <h1> Random Numbers </h1>
+# {% for number in random_numbers %}
+    # <p> {{ number }} </p>
+# {% endfor %}
+# <h1> Students </h1>
+# {% for student in students %}
+    # <p> {{ student['name'] }} - {{ student['age'] }} </p>
+# {% endfor %}
+
+# On the Browser:
+
+# Random Numbers
+# 3
+# 1
+# 5
+# Students
+# Michael - 35
+# John - 30
+# Mark - 25
+# KB - 27
+
+# --------------------POST FORM SUBMISSION--------------------------------------------------------------------
