@@ -295,5 +295,52 @@ def show_user():
 # State allows our site to know a lot of useful info like:
 # Whether there is a user logged in, who the current user is, what links a user has previously viewed 
 
+# We get to decide what to save about our clients --- session is a tool for developers to use to their advantage
+# We keep state data in session to help us solve problems down the line i.e. in subsequent HTTP requests
 
+# Persistent data storage helps us bridge the gap between a stateless protocol (HTTP) with the stateful data generated through it
+# Databases are another tool fro persistent data storage
+
+# ** DON'T abuse the amount of information you store in session!!! Store ONLY what you need!!! **
+
+# Cookies - some frameworks, including Flask, use cookies to store session data
+# Flask uses secure hashing of session data to send a packet of information from server to client -- that packet is known as a cookie!
+# Once a client's browser has recieved this cookie, it writes the information contained in it to a small file on their hard drive
+
+# While hashed, COOKIES ARE NOT INCREDIBLY SECURE, so DON'T save anything private in them!!
+
+from flask import Flask, render_template, request, redirect, session # Import session
+
+# To use session in Flask, it also requires you give your app a Secret Key
+app = Flask(__name__)
+app.secret_key = 'keep it secret, keep it safe' # set a secret key for security purposes
+
+# The create_user method is the method we receive the information from the POST request, write the information to session in this method
+@app.route('/users', methods=['POST'])
+def create_user():
+    print("Got Post Info")
+    # Here we add two properties to session to store the name and email
+    session['username'] = request.form['name']
+    session['useremail'] = request.form['email']
+    return redirect('/show')
+
+# Previously in our show_user function, we didn't have access to the name & email from the form submission.
+# Now, because of session, we have a way to access the name & email in a different function
+
+@app.route('/show')
+def show_user():
+    return render_template('show.html', name_on_template=session['username'], email_on_template=session['useremail'])
+
+# Now we're passing the information stored in session to the templates using named arguments
+# Session data is also available directly in our templates, so now we can do this:
+
+@app.route('/show')
+def show_user():
+    return render_template('show.html')
+
+# project_folder/templates/show.html
+
+# <h1>User:</h1>
+# <h3>{{session['username']}}</h3>
+# <h3>{{session['useremail']}}</h3>
 
