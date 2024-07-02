@@ -259,3 +259,41 @@ def create_user():
 
 # When the POST data is finished processing, we can prefrom a GET request on behalf of the client which redirects them
 
+from flask import Flask, render_template, request, redirect # don't forget to import redirect!
+    
+@app.route('/users', methods=['POST'])
+def create_user():
+    print("Got Post Info")
+    print(request.form)
+    name = request.form['name']
+    email = request.form['email']
+    return redirect("/show")	 
+    
+# adding this method
+@app.route("/show")
+def show_user():
+    print("Showing the User Info From the Form")
+    print(request.form) # <---- This did not show the info that was just submitted on the form!
+    return render_template("show.html")
+
+#-----------------------SESSION------------------------------------------------------------------------------------
+
+# Each method that is handling a route doesn't know anything about any of the other routes
+
+# The HTTP request/response cycle is STATELESS - each request/response cycle is independent & ignorant of all other requests before or after
+
+# Above, we made one request to POST the form data, then a second request to GET the /show route & redirect.
+# The second request has no access to the first request
+
+# Many sites make use of Persistent Data Storage. One form of persistence is Session.
+
+# Session - saving or writing certain valuable pieces of data for use in future cycles & reading that data we've stored in previous cycles
+# With session, we can establish a relationship with the client
+# With session, the user can have a conversation with a website, where the user makes decisions that can be tracked & the server can create a more cohesive user experience
+
+# State - the data that Outlives the process (HTTP request/response) that generated it
+# State allows our site to know a lot of useful info like:
+# Whether there is a user logged in, who the current user is, what links a user has previously viewed 
+
+
+
