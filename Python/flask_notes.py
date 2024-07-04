@@ -344,3 +344,13 @@ def show_user():
 # <h3>{{session['username']}}</h3>
 # <h3>{{session['useremail']}}</h3>
 
+# How to check if a key exists in session yet:
+if 'key_name' in session:
+    print('key exists!')
+else:
+    print("key 'key_name' does NOT exist")
+
+# How to get rid of what is currently stored in session:
+session.clear()		# clears all keys
+session.pop('key_name')		# clears a specific key
+
