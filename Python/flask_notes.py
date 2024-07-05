@@ -354,3 +354,42 @@ else:
 session.clear()		# clears all keys
 session.pop('key_name')		# clears a specific key
 
+# ----------------------------HIDDEN INPUTS---------------------------------------------------------------
+
+# Hidden Input fields are Form Fields that are Hidden from the user.
+# Hidden inputs are used, along with the other input elements, to transfer information between different pages
+
+# *A hidden input is just an ordinary input element, but has NO visual representation in the rendered HTML.*
+
+# <input type='hidden' name='action' value='register'>
+
+# <form method="post" action="/process">
+    # <input type="hidden" name="which_form" value="register">
+    # <input type="text" name="first_name">
+    # <input type="text" name="last_name">
+    # <input type="text" name="email">
+    # <input type="password" name="password">
+    # <input type="submit" value="Register">
+# </form>
+# <form method="post" action="/process">
+    # <input type="hidden" name="which_form" value="login">
+    # <input type="text" name="email">
+    # <input type="password" name="password">
+    # <input type="submit" value="Login">
+# </form>
+
+# Since both of these forms submit their data to the POST /process route, each form has a hidden input with the same name but different values
+
+# In the POST /process route, you could use this setup to process appropriately depending on which form was submitted
+if request.form['which_form'] == 'register':
+    #do registration process
+    pass
+elif request.form['which_form'] == 'login':
+    #do login process
+    pass
+
+# Even though hidden inputs are invisible to the user, it is actually Very Visible in the page's source!!
+
+# So other users can still see and change the values you set in the hidden input!
+
+# So BE CAREFUL in choosing what data you store in there as value and set appropriate actions if a user tries to change or remove it!
