@@ -1,0 +1,104 @@
+-----------------------------MySQL Installation - Windows----------------------------------------------
+1. Check your system specifications by using the search feature on your desktop to find "System Information".
+2. Download the required MySQL software from the MySQL website and choose the MySQL Installer MSI Option.
+3. Follow the installer guidelines with the following considerations:
+    - Choose the password "root" for your root user password
+    - When asked about which authentication method you should pick, DO NOT pick the first method and instead select Use Legacy Authentication method
+
+For "Windows Service", make sure you have the "Configure MySQL Server as a Windows Service" and "Start MySQL Server at System Startup" options selected (checked)
+
+The installer will configure your Windows system to run the MySQL Server automatically on startup, listening on the default port 3306 
+as well as establish the required environment variables to run MySQL tools from a Windows shell.
+
+Open a MySQL shell from CMD/PowerShell to make sure everything is working correctly: mysql -u root -p and enter "root" when promted.
+
+    STEP BY STEP PROCESS:
+
+Note: Install the latest version compatible with Windows. If that does not work, try installing an older version.
+
+MySQL Installer 8.0.34
+Click Download on Windows (x86 32-bit), MSI Installer
+
+Choosing a Setup Type
+Select Full (Installs all included MySQL products and features.)
+Next
+
+MySQL Community Downloads
+Select No thanks, just start my download
+
+Download
+MySQL Server 8.0.34 x64 Ready to download (5 other things also ready to download)
+Click Execute
+
+Installation
+List of things Ready to Install
+Click Execute
+
+Installation
+List of things status Complete with checks 
+Click Next
+
+Product Configuration
+3 things Ready to Configure
+Click Next
+
+Type and Networking
+Config Type: Development Computer
+Connectivity
+TCP/IP checked
+Port 3306
+X Protocol Port: 33060
+Click Next
+
+Authentication method
+Select Use Legacy Authentication Method (Retain MySQL 5.x Compatibility)
+Click Next
+
+Accounts and Roles
+MySQL Root Password: root
+Repeat Password: root
+Click Next
+
+Windows Service
+Check Configure MySQL Server as a Windows Service
+Windows Service Name: MySQL80
+Check Start the MySQL Server at System Startup
+Run Windows Service as ... 
+Select Standard System Accounts
+Click Next
+
+Server File Permissions
+Select Yes, grant full access to the user running the Windows Service (if applicable) and the administrators group only. Other users and groups will not have access.
+Click Next
+
+Apply Configuration 
+8 things should have checks
+The configuration for MySQL Server 8.0.34 was successful. Click Finish to continue.
+Click Finish
+
+Click Next or Finish through the next few dialog prompts until you get to the step below. Just enter "root" for username and "root" for password
+as done previously in the installer. This will check to see if MySQL server is set up correctly.
+
+Connect To Server
+Check MySQL Server 8.0.34 Port 3306 Arch... x64 Type Stand-alone Server Status Connection succeeded. (in green)
+User name: root
+Password: root
+Check
+Click Next
+
+Click 'next' through the following few menu options until you see the installation complete screenshot. 
+
+Installation Complete
+Check Start MySQL Workbench after Setup
+Check Start MySQL Shell after Setup
+Click Finish
+
+By checking those boxes, MySQL Workbench and Shell will start after the installation wizard is closed.
+
+    TROUBLESHOOTING:
+
+Problem: Running mysql in CMD/PowerShell gives the following error: 'mysql' is not recognized...
+
+Solution: Make sure you have an Environment Variable PATH to your MySQL executables.
+Likely to be in C:\Program Files\MySQL\MySQL Server 8.0\bin
+
