@@ -12,7 +12,7 @@ as well as establish the required environment variables to run MySQL tools from 
 
 Open a MySQL shell from CMD/PowerShell to make sure everything is working correctly: mysql -u root -p and enter "root" when promted.
 
-    STEP BY STEP PROCESS:
+***STEP BY STEP PROCESS:
 
 Note: Install the latest version compatible with Windows. If that does not work, try installing an older version.
 
@@ -95,10 +95,33 @@ Click Finish
 
 By checking those boxes, MySQL Workbench and Shell will start after the installation wizard is closed.
 
-    TROUBLESHOOTING:
+***TROUBLESHOOTING:
 
 Problem: Running mysql in CMD/PowerShell gives the following error: 'mysql' is not recognized...
 
 Solution: Make sure you have an Environment Variable PATH to your MySQL executables.
 Likely to be in C:\Program Files\MySQL\MySQL Server 8.0\bin
 
+- Search for Environmental Variables
+- Click on Environmental Variables
+- A pop up should come up with PATH
+- Select Path and hit Edit
+- Click on the next empty line and type in
+- C:\\Program Files\MySQL\MySQL Server 8.0\bin
+- Click on OK out of all of them
+- Open a Command Prompt and enter mysql -u root -p and enter root for password
+- If it worked, it should say Welcome to the MySQL Moniter
+- You can then type in show tables;
+- It would say No database selected
+- Then you could type in show databases;
+
+---------------CHECKING MYSQL WORKBENCH----------------------------------------------------------------------
+Find the MySQL Workbench in your applications and run/click it. It should open and say Welcome to MySQL Workbench.
+
+Under MySQL Connections, there should be a Local instance MySQL80 root localhost:3306 - click it
+
+Please enter password for the following service: root, then click OK
+
+It should open up to a navigator. Click Schemas
+
+-------------------------ERD Overview-------------------------------------------------------------------------
