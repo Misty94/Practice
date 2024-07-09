@@ -125,3 +125,125 @@ Please enter password for the following service: root, then click OK
 It should open up to a navigator. Click Schemas
 
 -------------------------ERD Overview-------------------------------------------------------------------------
+You are always Creating, Manipulating, and Saving Data on the internet.
+
+The HTML and CSS make up the View of a particular page, the backend Logic dictates the functionality, and the Database takes care of the data.
+
+Databases are collections of organized information that can be easily accessed, managed, and updated. (They are the backbone of your application.)
+
+One of the most important things about database design is to Organize your data to Minimize Repetition.
+
+ERD = Entity Relationship Diagram
+
+ERDs are visual planes of how your database looks and behaves.
+
+ERD = a map of the structure of how we want to store our data.
+
+SQL = the language we use to manipulate the data according to the relationships we define in our ERD.
+
+Designing the database first will help us visualize what our relational databases look like which will make it easier to choose the actual SQL syntax.
+
+ERD = a process of designing your tables & establishing relationships between them, making your data relational!
+
+Almost all imaginable data can be stored in a relational way.
+
+MySQL is a relational database. (one of the most popular relational databases in the world)
+(There are other non-relational databases where everything is stored in a single table. Advantages & disadvantages to both.)
+
+--------------------------ERDs in Workbench-------------------------------------------------------------------------------------------
+
+MySQL Workbench is a Graphical User Interface (GUI) for us to interact with MySQL through SQL commands.
+You can also interact with the MySQL databases through the terminal but the GUI (workbench) makes it much easier to see our data & create new databases.
+We can use it to map out our tables, establish relationships between them, and run some SQL queries.
+
+BASIC STEPS TO CREATE AN ERD
+- Click on the three connecting squares (ERD) under the dolphin on the left hand side on the Welcome to MySQL Workbench home screen.
+- Click on the plus sign next to Models to create a new model (also known as a Schema)
+- Click on mydb to rename this schema and then double click on Add Diagram at the top
+
+Save your ERD as a SQL Script.
+- Select database, then click Forward Engineer
+- Be sure the credentials are correct for the MySQL server and click Next.
+- (If you select Generate DROP SCHEMA, it will replace a schema with the same name & also Delete all previously saved data)
+- Check Include model attached scripts and click Next
+- Check Export MySQL Table Objects, enter password if prompted, and click Next
+- Review the SQL Script and click Save to File to save the SQL Script.
+
+** ALWAYS follow the guidelines unless your company has set up its own database conventions differently. **
+
+GUIDELINES:
+1. Make the table name PLURAL and ALL lowercase (ex. users, clients, courses, chapters, sites, modules, leads)
+2. Use 'id' as the primary ket and make it auto-incremented - name it 'id' 
+3. Name foreign keys with the singular of your primary key's table (ex. user_id, client_id, course_id, chapter_id, site_id)
+(In Workbench, you should always rename the foreign keys as the default will be plural)
+4. Use created_at and updated_at as columns for the timestamp in EVERY table you create.
+
+Note: Keep in mind that MySQL has some reserved keywords that you need to avoid.
+
+--------------------------------------DATA TYPES------------------------------------------------------------------------------------
+
+VARCHAR (number of characters)
+- Used to store strings of characters (as non-numeric values) that can be up to 65,535 characters.
+- It can store a variable number of characters, but only uses the space required for each record that is stored in the database.
+- It should be used for values with Different Character Lengths, like email, first_name, last_name
+
+CHAR (number of characters)
+- Also used to store characters (as non-numeric values), however, it will use up all space for the set number of characters regardless of the value
+- If you set CHAR(15) and store the value "Coding", it will use up the equivalent of 15 characters even though "coding" is only 6
+- It is good to use for things that will ALWAYS be a given number of characters, like state_abbreviation
+
+INT (used to store integers)
+- The most common columns that use INT data type are unique identifers for each table, also called IDs or keys.
+- The majority of rows in a table will not exceed 2.1 billion records.
+- It is also good to use for most normal number values like age or quantity.
+- Unsigned = Positive Numbers Only - can store numerical values from 0 up to 4,294,967,295
+- Signed = Positive & Negative Numbers - can store numerical values from -2,147,483,648 up to 2,147,483,647
+
+BIGINT (used to store huge numbers)
+- In most cases, you wouldn't need BIGINT, but if you wanted to store something like a Facebook id when using Facebook's API, since they have over a billion users, the id data type would need to be BIGINT
+- Unsigned = Positive Numbers Only - can store numerical values from 0 up to 18,446,744,073,709,551,615
+- Signed = Positve & Negative Numbers - can store numerical values from 9,223,372,036,854,775,807 to -9,223,372,036,854,775,808
+
+TINYINT (used for numbers that will be relatively small)
+- Used for something like a user level identifier (0 - inactive user, 1 - active user, 9 - admin)
+- Unsigned = can store numerical values from 0 up to 255
+- Signed = can store numerical values from -128 up to 127
+
+FLOAT 
+- Used to store numbers that need to have decimal places
+- An example would be item_cost
+
+TEXT 
+- Used to store a large amount of text, like a description, message, or comment
+- Use this for any text that VARCHAR() is too small to handle
+
+DATETIME
+- Used for time-stamps, like created_at and updated_at
+- Used to store a date (YYYY-MM-DD) or time (hh:mm:ss)
+
+DATE
+- Used for storing general dates in the format YYYY-MM-DD like a birthdate
+
+--------------------------DATABASE DESIGN------------------------------------------------------------------------
+DO NOT REPEAT DATA!
+
+Database Relations:
+- One to One
+- One to Many
+- Many to Many
+
+3 Forms of Normalization
+
+MySQL Workbench
+
+Type of Data
+
+When we normalize our tables, we do not repeat data & use our storage space more efficiently.
+Another advantage we get by normalizing our tables & establishing relationships between them is that identifers and Foreign Keys serve as the glue between our tables.
+With SQL, we can manipulate our tables and create the custom table we need for the job in question.
+
+By dividing our data into different tables, we make each table good at one thing: store instances or rows of that data
+If we separate our tables, our database becomes more modular.
+That means we can create our own custom tables depending on the task using SQL.
+
+-------------------------------ONE TO ONE-----------------------------------------------------------------------------------------
