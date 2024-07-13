@@ -42,3 +42,50 @@ WHERE school_id = 1;
 SELECT * FROM teachers 
 JOIN schools 
 ON schools.id = teachers.school_id;
+
+SELECT * FROM classes 
+JOIN teachers 
+ON teachers.id = classes.teacher_id;
+
+SELECT classes.name AS course_name, teachers.first_name AS teacher 
+FROM classes JOIN teachers 
+ON teachers.id = classes.teacher_id;
+
+SELECT CONCAT ( first_name, ' ', last_name ) AS teacher, classes.name AS course 
+FROM classes JOIN teachers 
+ON teachers.id = classes.teacher_id;
+
+SELECT CONCAT ( first_name, ' ', last_name ) AS student, classes.name AS class 
+FROM students 
+JOIN students_classes ON students.id = students_classes.student_id 
+JOIN classes ON classes.id = students_classes.class_id;
+
+SELECT students.last_name AS student, classes.name AS class, teachers.last_name AS teacher 
+FROM students 
+JOIN students_classes ON students.id = students_classes.student_id 
+JOIN classes ON classes.id = students_classes.class_id 
+JOIN teachers ON teachers.id = classes.teacher_id;
+
+SELECT CONCAT ( students.first_name, ' ', students.last_name ) AS student, classes.name AS class, teachers.last_name AS teacher 
+FROM students 
+JOIN students_classes ON students.id = students_classes.student_id 
+JOIN classes ON classes.id = students_classes.class_id 
+JOIN teachers ON teachers.id = classes.teacher_id;
+
+SELECT CONCAT ( students.first_name, ' ', students.last_name ) AS student, 
+classes.name AS class, 
+CONCAT ( teachers.first_name, ' ', teachers.last_name ) AS teacher 
+FROM students 
+JOIN students_classes ON students.id = students_classes.student_id 
+JOIN classes ON classes.id = students_classes.class_id 
+JOIN teachers ON teachers.id = classes.teacher_id;
+
+SELECT CONCAT ( students.first_name, ' ', students.last_name ) AS student, 
+classes.name AS class, 
+CONCAT ( teachers.first_name, ' ', teachers.last_name ) AS teacher, 
+schools.name AS school 
+FROM students 
+JOIN students_classes ON students.id = students_classes.student_id 
+JOIN classes ON classes.id = students_classes.class_id 
+JOIN teachers ON teachers.id = classes.teacher_id 
+JOIN schools ON schools.id = teachers.school_id;
