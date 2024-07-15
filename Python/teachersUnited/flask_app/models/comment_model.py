@@ -2,6 +2,7 @@ from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app import DATABASE
 from flask import flash
 from flask_app.models.post_model import Post
+from flask_app.models.user_model import User
 
 class Comment:
     def __init__(self, data):
@@ -40,6 +41,29 @@ class Comment:
             current_comment.post = current_post
             comments.append(current_comment)
         return comments
+    
+    @classmethod
+    def connect_comment_to_post(cls):
+        # query = "SELECT CONCAT ( first_name, ' ', last_name ) AS user, comments.content AS comment, posts.content AS post "
+        query = "SELECT * "
+        query += "FROM comments "
+        query += "JOIN users ON users.id = comments.user_id "
+        query += "JOIN posts WHERE comments.post_id = posts.id;"
+
+        results = connectToMySQL( DATABASE ).query_db(query)
+        comments_list = []
+        for row in results:
+            comment = cls(row)
+            post_data = {
+                **row,
+                "created_at": row['posts.created_at'],
+                "updated_at": row['posts.updated_at'],
+                "id": row['posts.id']
+            }
+            post = Post(post_data)
+            comment.post = post
+            comments_list.append(comment)
+        return comments_list
 
     @staticmethod
     def validate_comment(data):

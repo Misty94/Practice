@@ -10,7 +10,8 @@ def display_dashboard():
         return redirect('/')
     
     posts = Post.get_all_with_users()
-    comments = Comment.get_all_with_posts()
+    # comments = Comment.get_all_with_posts()
+    comments = Comment.connect_comment_to_post()
     return render_template("dashboard.html", posts = posts, comments = comments)
 
 
