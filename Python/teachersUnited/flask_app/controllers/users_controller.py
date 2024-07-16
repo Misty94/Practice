@@ -3,11 +3,23 @@ from flask import render_template, request, redirect, session, flash
 from flask_app.models.user_model import User
 from flask_app.models.message_model import Message
 from flask_bcrypt import Bcrypt
+# from pycountry_convert import country_alpha2_to_continent_code, country_name_to_country_alpha2
+# from geopy.geocoders import Nominatim
 
 bcrypt = Bcrypt(app)
 
 @app.route('/')
 def display_advertisement():
+    # try:
+    #     cn_a2_code = country_name_to_country_alpha2(col)
+    # except:
+    #     cn_a2_code = 'Unknown'
+    # try:
+    #     cn_continent = country_alpha2_to_continent_code(cn_a2_code)
+    # except:
+    #     cn_continent = 'Unknown'
+
+    # cn_a2_code = cn_a2_code, cn_continent = cn_continent
     return render_template("advertisement.html")
 
 
