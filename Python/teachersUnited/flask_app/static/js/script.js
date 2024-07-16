@@ -8,12 +8,21 @@ const openReg = () => {
     console.log("regggggg")
 }
 
+const openComment = () => {
+    document.getElementById("commentForm").style.display = "block";
+    console.log("Comment was left.")
+}
+
 function closeLogin() {
     document.getElementById("loginForm").style.display = "none";
 }
 
 function closeReg() {
     document.getElementById("regForm").style.display = "none";
+}
+
+function closeComment() {
+    document.getElementById("commentForm").style.display = "none";
 }
 
 const quotes = [

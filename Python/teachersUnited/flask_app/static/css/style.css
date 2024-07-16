@@ -37,6 +37,20 @@ body {
     left: 30%; */
 }
 
+#commentForm{
+    display: none;
+    border: 3px solid grey;
+    width: 500px;
+    /* margin: 0px auto; */
+    text-align: center;
+    background-image: url(https://media.istockphoto.com/id/484715057/photo/blank-blackboard.jpg?s=612x612&w=0&k=20&c=33MGy01QPrTiE6LMF8Rb2NaSBzmpLPcUDyFKnWNIPOM=);
+    color: snow;
+    font-size: 1.1rem;
+    /* position: fixed;
+    top: 10%;
+    left: 30%; */
+}
+
 form > label{
     display: block;
     margin: 5px 0px;
