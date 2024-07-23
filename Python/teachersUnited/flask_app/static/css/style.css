@@ -69,3 +69,8 @@ button{
     background-image: url(https://media.istockphoto.com/id/484715057/photo/blank-blackboard.jpg?s=612x612&w=0&k=20&c=33MGy01QPrTiE6LMF8Rb2NaSBzmpLPcUDyFKnWNIPOM=);
     background-size: cover;
 }
+
+#map {
+    height: 100%;
+    width: 100vw;
+}

@@ -20,7 +20,14 @@ def display_advertisement():
     #     cn_continent = 'Unknown'
 
     # cn_a2_code = cn_a2_code, cn_continent = cn_continent
-    return render_template("advertisement.html")
+    markers = [
+        {
+            'lat': 0,
+            'lon': 0,
+            'popup': 'This is the middle of the map.'
+        }
+    ]
+    return render_template("advertisement.html", markers = markers)
 
 
 @app.route('/register', methods=['POST'])
