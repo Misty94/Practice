@@ -1,0 +1,5 @@
+== compares the values after performing type conversion if necessary
+=== compares the values without performing type conversion
+
+Integers:
+In order to loop through a number, you need to change it into a string.   num.toString()
