@@ -7,27 +7,16 @@
     <link rel="stylesheet" href="blurredBackground.css">
 </head>
 <body>
-    <h2>Example</h2>
-    <p>Click on the "Open Form" button to open the popup form.</p>
-    <div class="openBtn">
-    <button class="openButton" onclick="openForm()"><strong>Open Form</strong></button>
+    <h1>Popup Box with Background Blur</h1>
+    <button onclick="openPopup()">Open Popup</button>
+    <div id="popupContainer">
+        <div class="popupContent">
+            <button id="closebtn" onclick="closePopup()">X</button>
+            <h2>Welcome to This Website!</h2>
+            <p>Please create an account!</p>
+        </div>
     </div>
-    <div class="loginPopup">
-    <div class="formPopup" id="popupForm">
-        <form action="/action_page.php" class="formContainer">
-            <h2>Please Log in</h2>
-            <label for="email">
-                <strong>E-mail</strong>
-            </label>
-            <input type="text" id="email" placeholder="Your Email" name="email" required>
-            <label for="psw">
-                <strong>Password</strong>
-            </label>
-            <input type="password" id="psw" placeholder="Your Password" name="psw" required>
-            <button type="submit" class="btn">Log in</button>
-            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-        </form>
-    </div>
+    <div id="overlay"></div>
     <script src="blurredBackground.js"></script>
 </body>
 </html>

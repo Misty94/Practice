@@ -4,6 +4,42 @@
     box-sizing: border-box;
 }
 
+#popupContainer {
+    display: none;
+    position: fixed;
+    height: 150px;
+    width: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(to right, rgb(232, 106, 106), black, black, black, rgb(232, 106, 106));
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    z-index: 9999;
+    text-align: center;
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(206,196,196,0.5);
+    backdrop-filter: blur(5px);
+}
+
+#closebtn {
+    font-size: small;
+    border-radius: 50%; /* To make it a circle */
+    background-color: black;
+    margin-left: 350px;
+    color: white;
+}
+
 /* This makes everything very fuzzy! */
 /* body {
     filter:blur(5px);
@@ -17,71 +53,15 @@
     backdrop-filter: blur(2px) !important;
 } */
 
-.openBtn {
-    display: flex;
-    justify-content: left;
-}
-.openButton {
-    border: none;
-    border-radius: 5px;
-    background-color: #1c87c9;
-    color: white;
-    padding: 14px 20px;
-    cursor: pointer;
-    position: fixed;
-}
-.loginPopup {
-    position: relative;
-    text-align: center;
-    width: 100%;
-}
-
-
-.formPopup {
+/* .formPopup {
     display: none;
     position: fixed;
     left: 45%;
     top: 5%;
     transform: translate(-50%, 5%);
     border: 3px solid #999999;
-    z-index: 9;
+    z-index: 9; */
     /* filter: blur(0px); */
     /* backdrop-filter: blur(5px) !important; */
-}
+/* } */
 
-
-.formContainer {
-    max-width: 300px;
-    padding: 20px;
-    background-color: #fff;
-}
-.formContainer input[type=text],
-.formContainer input[type=password] {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0 20px 0;
-    border: none;
-    background: #eee;
-}
-.formContainer input[type=text]:focus,
-.formContainer input[type=password]:focus {
-    background-color: #ddd;
-    outline: none;
-}
-.formContainer .btn {
-    padding: 12px 20px;
-    border: none;
-    background-color: #8ebf42;
-    color: #fff;
-    cursor: pointer;
-    width: 100%;
-    margin-bottom: 15px;
-    opacity: 0.8;
-}
-.formContainer .cancel {
-    background-color: #cc0000;
-}
-.formContainer .btn:hover,
-.openButton:hover {
-    opacity: 1;
-}
