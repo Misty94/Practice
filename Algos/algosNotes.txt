@@ -3,3 +3,23 @@
 
 Integers:
 In order to loop through a number, you need to change it into a string.   num.toString()
+
+
+JS Methods:
+
+reduce() iterates over an array & accumalates a single a single value based on a provided function
+
+... is the spread operator & collects all the arguments passed to the function into an array
+- This allows the function to handle any number of arguments, making it more flexible
+- You can then iterate over the array (that the ... created) to preform operations on the arguments.
+
+Example of the Spread Operator: 
+function sum(...numbers) {
+    let total = 0;
+    for (let number of numbers) {
+        total += number;
+    }
+    return total;
+}
+
+console.log(sum(4,5,6,7)) // output: 22
