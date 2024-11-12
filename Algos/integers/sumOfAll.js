@@ -19,6 +19,17 @@ console.log(sumOfAll(10, 65, 9)) // 84
 
 // ******************************************************************
 
+function sum() {
+    let total = 0;
+    for (let i in arguments) {
+        total += arguments[i];
+    }
+    return total;
+}
+
+console.log(sum(4, 4, 4, 4)) // 16
+console.log(sum(5, 9, 3)) // 17
+
 
 // Can't Make It Work This Way
 
@@ -29,6 +40,3 @@ console.log(sumOfAll(10, 65, 9)) // 84
 //     }
 //     return sum;
 // }
-
-// console.log(totalSum(4, 4, 4, 4)) // 16
-// console.log(totalSum(5, 9, 3)) // 17
