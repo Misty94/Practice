@@ -17,3 +17,40 @@ npm start
 
 (npm install @material-ui/core --legacy-peer-deps)
 (npm install socket.io-client)
+
+
+***************************************************************************************
+MERN SetUp Guide
+
+1. Create a new folder for your project
+2. cd into that folder
+3. Initialize a javascript package for the project using: npm init -your
+4. Install dependencies: npm install express cors mongoose
+5. Create a server.js file in the project folder
+6. Create a server folder in the project folder
+7. Make 4 directories in the server folder: config, models, controllers, routes
+8. Make a mongoose.config.js file in the config folder
+9. Set up the config.js file as usual --> make sure you change name of db to something unique that hasn't been used yet
+10. Set up server.js as usual --> remember to require the mongoose config, but not the routes yet
+11. CHECKPOINT - Test it using nodemon server.js (running the server) to make sure it says established connection with db
+12. Create a model file as usual in the models folder according to wireframe and requirements
+13. Create a controller file in the controllers folder & set up the controllers to work with your models that you imported -
+Controller file needs the import to connect with the model. Have the CRUD functions in the controllers
+14. Create a routes file in the routes folder & set up routes. Import the controllers in the routes file.
+Make sure the methods in the controllers are referenced in the routes.
+15. In server.js import (require) the routes & pass the app object to it - 
+Make sure this is the second to last line in the server.js - basically the require routes part is underneath the app.use ports
+16. Enable CORS -> In server.js import it and then insert the app.use(cors()) command
+17. CHECKPOINT - Test all routes using postman before building the front end
+
+* I learned to create the server file first & and do all the commands for the backend inside the server file
+
+****************************************************************************************
+
+1. 
+
+****************************************************************************************
+
+Express is used to create our API, so we can have routes & respond with some JSON data
+Mongoose is so we can use JavaScript code to talk to a MongoDB database.
+Cors is to share API information with the React information.
