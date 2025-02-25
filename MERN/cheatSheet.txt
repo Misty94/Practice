@@ -47,7 +47,10 @@ Make sure this is the second to last line in the server.js - basically the requi
 
 ****************************************************************************************
 
-1. 
+1. Inside the overall project folder, create a react app - npx create-react-app client (client will be the name of the frontend folder)
+2. cd into client folder
+3. Install dependencies for react
+4. Build out the front end
 
 ****************************************************************************************
 
