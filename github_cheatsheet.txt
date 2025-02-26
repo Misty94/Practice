@@ -1,0 +1,108 @@
+When invited to collaborate on a repository:
+1. Click the Green Code Button
+2. Copy the URL
+3. Open a terminal 
+4. Navigate into the folder where you want the repository to be
+5. When in the right folder, type:
+6. git clone https://github.com/whatevertheurlis (an example)
+NOTE: You need to install git on your computer. Search git in Google to download it.
+7. Use VS Code to open the repository that is now a folder on your computer
+8. On the bottom left corner of vs code, it will show you which branch you are in. Probably main in the first instance
+
+To Add, Edit, or Delete Code:
+1. Create a new branch
+2. Create a matching pull requirements
+3. Merge the pull request into the main branch
+NOTE: It's BAD PRACTICE to push changes directly to the main branch!
+
+9. Create a new branch by going to the Source Control view (where you go to push to github)
+10. Click the three horizontal dots for more actions 
+11. Go to Branch and then Create branch
+12. Name the new branch something like my_first_feature
+13. Now the branch at the bottom left corner is the branch you just created
+NOTE: "my_first_feature" is a local branch - it does not exist yet in your GitHub repository
+14. Now you can make changes to existing files and add new files as well
+15. When you go back to the Source Control view, you can see all the changes that you made
+16. Click on the + beside each change you want to save to make them Staged Changes 
+17. Add a message to describe the code you are adding
+18. Click on the checkmark 
+19. Click on the three horizontal dots for more options
+20. Click on Push then click OK in order to create a new matching branch (my_first_feature) in your GitHub repository
+
+21. On GitHub, it now has a message: my_first_feature had recent pushes less than a minute according
+22. Click the Green Compare & pull request button 
+
+NOTE: If you don't see that message:
+1. The push was unsuccessful - try to push again - check your internet connection
+2. Or it has been awhile since you pushed a commit to your new branch
+    3. If so, go to the Pull requests tab
+    4. Click the Green New pull request button
+    5. Click on the compare:main button and choose your branch (my_first_feature) from the dropdown menu
+    6. Then Click on the Green Create pull request button
+
+23. A Pull Request needs a Title and a Description
+24. For the Title, type what you added/edited or the goal of what you did 
+25. For the Description, describe what you did
+26. Click on Green Create pull request 
+27. In the pull request just created, there is a discussion/conversation that you can add comments to
+28. You can also see what files you are changing by clicking on the Files changed (2) tab
+29. You can push multiple commits in one pull request 
+30. That means after doing all of these steps, you can: 
+31. Go back to VS Code, add/edit more code, follow the steps again to get it to github, & the new code will be in the same pull request
+
+Final Step: Merge the Pull Request to the Main Branch
+32. Go to the conversation tab, scroll down
+33. Click Green Merge pull request
+34. Click Green Confirm merge
+
+35. "Pull request succesfully merged and closed"
+36. It is Good Practice to Delete Merged Branches
+37. Beside that message, click on Delete branch button
+38. Scroll up, and click on the Code tab
+39. You can now see the changes you've made on GitHub
+
+
+
+********* Terminal Commands: ****************
+
+cd into new repository/folder
+
+git branch (this will show you a list of the branches) (* main)
+
+git branch -c misty-profilepage (this will create a new branch called misty-profilepage) (-c means create)
+
+git branch (now the list will be misty-profilepage and * main)
+(The branch listed in green is the one you are in.)
+
+git checkout misty-profilepage 
+Switched to branch 'misty-profilepage'
+Your branch is up to date with 'origin/main'
+
+git branch (* misty-profilepage is now green and main is white)
+Now anything that is pushed will go into the misty-profilepage branch
+
+git status
+On branch misty-profilepage
+Your branch is up to date with 'origin/main'
+It will also show any Untracked Files
+
+git add example.py
+git status 
+It will tell you which branch you are in & have 
+Changes to be committed:
+new file: example.py (will be in green)
+
+git add example.html 
+git status (will now show 2 new files ready to be committed)
+
+git branch --help 
+(This will open a browser that will list out different commands to be used & other helpful info)
+
+git commit -m "completed profile page" (this is the message added to the commit) (-m means message)
+2 files changed
+
+git push origin head 
+Enumerating objects: 5, done.
+
+Now on GitHub, it will show that the project has another branch
+Click on branches to see all of your branches & all of the active branches
