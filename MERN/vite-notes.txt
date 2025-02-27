@@ -1,0 +1,36 @@
+First attempt at creating a Vite/React app: 
+
+cd vite-practice
+
+npm create vite@latest client --template react
+
+Told it to proceed
+
+Select a framework: 
+
+I chose Vanilla, but next time look for React maybe?
+
+Select a variant:
+
+I chose JavaScript
+
+Done. Now run:
+
+cd client
+
+npm install
+
+npm run dev
+
+This made the localhost:5173 show a Vite + JavaScript sign appear. (It should've been Vite + React)
+
+It had counter.js and main.js.
+
+
+SECOND ATTEMPT:
+
+Select a framework: 
+
+scroll down and press Enter on React
+
+Now it is Vite + React on the localhost
