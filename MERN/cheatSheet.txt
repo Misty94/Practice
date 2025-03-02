@@ -57,3 +57,25 @@ Make sure this is the second to last line in the server.js - basically the requi
 Express is used to create our API, so we can have routes & respond with some JSON data
 Mongoose is so we can use JavaScript code to talk to a MongoDB database.
 Cors is to share API information with the React information.
+
+*****************************************************************************************
+
+Components: 
+
+- building blocks of a React UI
+- represents reusable & independent parts of the user interface
+- can be functional or class-based
+- responsible for rendering specific pieces of content or functionality 
+- can be nested within each other forming a hierachical structure
+- promote modularity, reusability, & maintainability of the codebase
+
+Views:
+
+- high-level components that represent distinct pages or sections
+- often route-driven, associated with specific URLs or routes within an application 
+- typically orchestrate the layout & composition of other components to render a complete page or section
+- can be considered as containers or wrappers for other components, defining the overall structure & organization of the UI
+
+Views are specialized components that serve as entry points for different parts of the application.
+
+Components are the reusable building blocks that make up the content & functionality within those views
