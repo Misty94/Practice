@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background-color: blueviolet;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.image {
+    position: relative;
+    width: 720px;
+    /* height: 405px; */
+    height: 600px;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.img2 {
+    z-index: 1;
+    background-image: url(./tiger.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.img1 {
+    z-index: 2;
+    width: 50%;
+    overflow: hidden;
+    /* border-right: 0.1px solid rgba(0,0,0,0.5); */
+    border-right: 0.1px solid snow;
+}
+
+.originalImg {
+    width: 720px;
+    /* height: 405px; */
+    height: 600px;
+    background-image: url(./panther.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.layer {
+    z-index: 3;
+}
+
+.circle {
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    cursor:grab;
+    background-color: orange;
+    position: absolute;
+    z-index: 4;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    user-select: none;
+}
+
+.circle:active {
+    z-index: 2;
+}
