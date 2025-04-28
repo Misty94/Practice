@@ -9,3 +9,11 @@ For the DB updated-on note: NOW() ON UPDATE NOW()
 
 Notes:
 (Datatype for DB: ENUM(1,9) -- that means it's either one of two things, so in this case: 1 or 9)
+
+
+To Check And Make Sure Everything Is Still Installed, Open a Terminal
+python --version 
+pip --version
+pipenv --version
+
+(If you haven't opened the project in a while, try redoing the shell command and/or python server.py instead)
